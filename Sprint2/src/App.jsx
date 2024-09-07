@@ -1,4 +1,4 @@
-import Designer from './assets/Designer.jpeg'
+import Designer from './assets/LogoITPowerBank.png';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 
@@ -9,6 +9,7 @@ function App() {
       {/* <Header /> */}
       {/* <Sidebar /> */}
       {/* <Footer /> */}
+      <p>ashe</p>
       <Routes>
         {/* <Route path="/" element={< />} /> */}
         {/* <Route path="/" element={< />} /> */}
