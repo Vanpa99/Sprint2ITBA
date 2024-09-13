@@ -1,42 +1,310 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+:root {
+  --claro: #ebf4fb;
+  --oscuro: #172630;
+  --difuminado: #17263028;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--claro);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: var(--oscuro);
+  border-bottom: 3px solid var(--difuminado);
+
+}
+
+.logo img {
+  height: 50px;
+}
+
+.login form {
+  display: flex;
+  align-items: center;
+}
+
+.login input {
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid var(--difuminado);
+  border-radius: 3px;
+}
+
+.login button {
+  padding: 5px 10px;
+  border: none;
+  background-color: var(--oscuro);
+  color: var(--claro);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.contenedor {
+  display: flex;
+  flex: 1;
+}
+
+.cont-nav {
+  width: 200px;
+  padding: 15px;
+  border-right: 3px solid var(--difuminado);
+}
+
+.cont-nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cont-nav ul li {
+  margin-bottom: 10px;
+}
+
+.cont-nav ul li a {
+  text-decoration: none;
+  color: var(--oscuro);
+  font-weight: bold;
+  display: block;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.cont-nav ul li a:hover {
+  background-color: var(--difuminado);
+}
+
+.area-principal {
+  padding: 20px;
+  flex: 1;
+}
+
+.p-cuentas {
+  text-align: center;
+  margin-top: -1rem;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+footer {
+  color: var(--oscuro);
+  text-align: center;
+  padding: 10px 0px;
+  bottom: 0;
+  width: 100%;
+  border-top: var(--difuminado) 3px solid;
+}
+
+footer nav ul {
+  list-style-type: none;
+}
+
+footer nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+footer nav ul li a {
+  color: var(--oscuro);
+  text-decoration: none;
+}
+
+.recordatorio {
+text-align: center;
+margin-top: 3rem;
+}
+
+/* CUENTAS */
+/* Estilos de la tabla de cuentas */
+.accounts-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.accounts-table th,
+.accounts-table td {
+  border: 1px solid var(--difuminado);
+  padding: 10px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.accounts-table th {
+  background-color: var(--oscuro);
+  color: var(--claro);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.accounts-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.accounts-table tr:hover {
+  background-color: #ddd;
+}
+
+.accounts-table button {
+  padding: 5px 10px;
+  background-color: var(--oscuro);
+  color: var(--claro);
+  border: none;
+  cursor: pointer;
+}
+
+
+/* Estilos para el resumen de cuentas */
+.account-summary {
+  margin-top: 20px;
+}
+
+.account-summary h3 {
+  margin-bottom: 10px;
+}
+
+.account-summary ul {
+  list-style: none;
+  padding: 0;
+}
+
+.account-summary ul li {
+  background: var(--difuminado);
+  padding: 10px;
+  border-bottom: 1px solid var(--oscuro);
+}
+
+/* TRANSFERENCIAS */
+
+.input-pago,
+.input-prestamo {
+  display: none;
+}
+
+.select-op{
+  margin-bottom: 10px;
+}
+
+form input[type="submit"],
+form input[type="reset"] {
+  width: 49%;
+  border: none;
+  background-color: var(--oscuro);
+  color: var(--claro);
+  border-radius: 0.2rem;
+  padding: 0.4rem 0;
+  cursor: pointer;
+}
+
+/* PRESTAMOS */
+
+.form-container {
+  border: 2px solid var(--difuminado);
+  max-width: 80%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 3px;
+}
+
+.label-prestamo {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.info-form {
+  margin: 10px 0 0 15px;
+}
+
+input[type="number"] {
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 10px 15px;
+  color: var(--claro);
+  background-color: var(--oscuro);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* MEDIAS QUERYS */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .encabezado {
+      flex-direction: column;
+      align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+
+  .contenedor {
+      flex-direction: column;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .cont-nav {
+      width: 100%;
+      border-right: none;
+      border-bottom: 3px solid var(--difuminado);
+      text-align: center;
+      padding: 0;
   }
+
+  .cont-nav nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+  }
+
+  .cont-nav nav ul li {
+      margin-bottom: 0px;
+  }
+
+  .area-principal {
+      padding: 10px;
+  }
+
+
+
 }
 
-.card {
-  padding: 2em;
-}
+/* CELULARES */
+@media (max-width: 523px) {
 
-.read-the-docs {
-  color: #888;
+  .login input,
+  .login button {
+      width: 100%;
+      margin: 5px 0;
+  }
+
+  .login form {
+      flex-direction: column;
+  }
+
+  .cont-nav nav ul {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .cont-nav nav ul li {
+      flex: 1 1 45%;
+      margin: 5px;
+      max-width: 100px;
+  }
 }

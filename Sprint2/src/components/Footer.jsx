@@ -2,22 +2,22 @@ import { Link } from "react-router-dom";
 
 function Footer() {
     return (
-        <>
+        <footer>
             <p>© 2024 ITPowerBank. Todos los derechos reservados.</p>
             <nav>
                 <ul>
                     <li>
-                        <Link href="#">Política de Privacidad</Link>
+                        <Link to="#">Política de Privacidad</Link>
                     </li>
                     <li>
-                        <Link href="#">Términos y Condiciones</Link>
+                        <Link to="#">Términos y Condiciones</Link>
                     </li>
                     <li>
-                        <Link href="#">Contacto</Link>
+                        <Link to="#">Contacto</Link>
                     </li>
                 </ul>
             </nav>
-        </>
+        </footer>
     );
 }
 
