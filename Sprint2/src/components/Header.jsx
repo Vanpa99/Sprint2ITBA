@@ -7,7 +7,7 @@ function Encabezado() {
             </div>
             <div id="cont_log_index"></div>
             <div id="cont__boton_logout"></div>
-        </header>
+        </header>  
       );
 }
 
