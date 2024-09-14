@@ -244,9 +244,9 @@ button {
   margin-bottom: 10px;
 }
 
-/* CONVERSOR*/ 
+/* /* CONVERSOR*/ 
 
-#monto{
+/* #monto{
   width: 50%;
   margin: 10px;
   text-align: center;
@@ -270,10 +270,10 @@ input[type="number"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 15px;
-}
+} */
 
 /* CARD*/
-.ingreso-pesos{
+/* .ingreso-pesos{
   display: inline-block;
 }
 
@@ -310,14 +310,14 @@ input[type="number"] {
   color:var(--oscuro);
   font-weight: bold;
   font-size: 40px;
-}
+}  */ 
 /* MEDIAS QUERYS */
 
 /* Tablets */
 @media (max-width: 768px) {
   .encabezado {
       flex-direction: column;
-      align-items: center;
+      align-items:center;
   }
 
   .contenedor {
@@ -344,11 +344,6 @@ input[type="number"] {
 
   .area-principal {
       padding: 10px;
-  }
-
-  .containerform{
-    border:solid red 2px;
-    
   }
 }
 
