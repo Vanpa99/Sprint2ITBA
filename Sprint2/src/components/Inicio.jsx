@@ -3,6 +3,9 @@ import Moneda from "./Moneda";
 import Card from "./Card";
 
 function Inicio() {
+
+    //CONVERSOR DE MONEDA
+
     // Genera un número de 6 cifras aleatorio
     const generateRandomPesos = () => {
         return Math.floor(100000 + Math.random() * 900000).toString();
@@ -20,18 +23,18 @@ function Inicio() {
         setPesos3(generateRandomPesos());
     }
 
-    
 
     return (
         <>
-            <section className="area-principal">
-                <h2 className="bienvenida">¡Bienvenido!</h2>
+        <section className="area-principal">
+            {/* CONVERSOR DE MONEDA */}
+            
                 <Moneda />
                 <Card pesos={pesos1} />
                 <Card pesos={pesos2} />
                 <Card pesos={pesos3} />
                 
-            </section>
+        </section>
         </>
     );
 }
