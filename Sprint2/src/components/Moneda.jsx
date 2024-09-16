@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Boton from "./Boton";
 function Moneda() {
   const [amount, setAmount] = useState(1);
   const [fromCurrency, setFromCurrency] = useState("ARS");
@@ -63,7 +64,10 @@ function Moneda() {
             <option value="BRL">BRL</option>
             <option value="CLP">CLP</option>
           </select>
-          <button type="button">Convertir</button>
+
+          <Boton  type="button" 
+            text="Convertir" />{/* DARLE FUNCIONALIDAD */}
+            
         </form>
         <h3 id="resultado">{result}</h3>
       </div>
