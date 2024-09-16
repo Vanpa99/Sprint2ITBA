@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Boton from './Boton';
 
 function Prestamos() {
 
@@ -41,34 +42,22 @@ function Prestamos() {
             
             <h3>Para conocer el valor de los pagos mensuales que debe realizar, ingrese los siguientes datos:</h3>
             <p>Se considerará una tasa mensual del 2%.</p>
-            <br />
             <form id="form_prest">
                 <nav>
                     <label htmlFor="monto">Ingrese el monto en pesos del préstamo que desea realizar:</label>
-                    <br />
                     <input type="number" id="monto" name="monto" placeholder="Monto del préstamo" required />
-                    <br />
                 </nav>
-                <br />
                 <nav>
                     <label htmlFor="periodo">Ingrese el periodo de tiempo en meses en el cual abonará el préstamo:</label>
-                    <br />
                     <input type="number" id="periodo" name="periodo" placeholder="Periodo" required />
-                    <br />
                 </nav>
-                <br />
                 <nav>
-                    <button type="submit">Calcular</button>
-                    <br />
+                    <Boton type='submit' text='Calcular' />
                 </nav>
-                <br />
                 <nav>
                     <label htmlFor="resultado">Valor calculado de los pagos mensuales a realizar:</label>
-                    <br />
                     <input type="number" id="resultado" name="resultado" disabled />
-                    <br />
                     <label htmlFor="acumulado">Valor total acumulado en el periodo indicado:</label>
-                    <br />
                     <input type="number" id="acumulado" name="acumulado" disabled />
                 </nav>
             </form>

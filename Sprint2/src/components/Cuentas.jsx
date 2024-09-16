@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Boton from './Boton';
 
 function Cuentas() {
 
@@ -16,7 +17,7 @@ function Cuentas() {
         // Agregar evento de clic a los botones de detalles
         document.querySelectorAll(".details-btn").forEach(button => {
             button.addEventListener("click", function() {
-                const accountNumber = this.getAttribute("data-account");
+                const accountNumber = this.getAttribute("dataAccount");
                 openModal(accountNumber);
             });
         });
@@ -47,7 +48,7 @@ function Cuentas() {
         };
     }, []); // El array vacío asegura que useEffect se ejecute solo una vez, después de que el componente se monte
 
-    return ( 
+    return (
         <div>
             <h2 className="bienvenida">Mis Cuentas</h2>
             <p className="p-cuentas">
@@ -69,16 +70,20 @@ function Cuentas() {
                         <td>Cuenta Corriente</td>
                         <td>123-456789-00</td>
                         <td>$50,000</td>
-                        <td><button className="details-btn" data-account="123-456789-00">Ver Detalles</button></td>
+                        <td>
+                            <Boton text="Ver Detalles" className="details-btn" dataAccount="123-456789-00" />
+                        </td>
                     </tr>
                     <tr>
                         <td>Caja de Ahorro</td>
                         <td>987-654321-00</td>
                         <td>$15,300</td>
-                        <td><button className="details-btn" data-account="987-654321-00">Ver Detalles</button></td>
+                        <td>
+                            <Boton text="Ver Detalles" className="details-btn" dataAccount="987-654321-00" />
+                        </td>
                     </tr>
                 </tbody>
-            </table> 
+            </table>
 
             {/* Movimientos recientes */}
             <div className="account-summary">
@@ -88,7 +93,7 @@ function Cuentas() {
                     <li>Transferencia: -$500 (02/09/2024)</li>
                     <li>Pago de Servicios: -$1,200 (03/09/2024)</li>
                 </ul>
-            </div> 
+            </div>
 
             {/* Gráfico ilustrativo */}
             <div className="account-charts">

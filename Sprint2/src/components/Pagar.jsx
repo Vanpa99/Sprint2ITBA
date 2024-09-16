@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Boton from './Boton';
 
 function Pagar() {
     const [accion, setAccion] = useState('transferencia');
@@ -66,11 +67,8 @@ function Pagar() {
                         </section>
                     </article>
                 )}
-
-                <article className="buttons">
-                    <input type="submit" value="Enviar" id="enviarFormu" />
-                    <input type="reset" value="Limpiar" onClick={clearInputs} />
-                </article>
+                <Boton type='submit' text='Enviar' id='enviarFormu' />
+                <Boton type='reset' text='Limpiar' onClick={clearInputs} />
             </form>
 
             <section>
