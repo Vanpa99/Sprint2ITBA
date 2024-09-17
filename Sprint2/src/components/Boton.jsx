@@ -8,6 +8,12 @@ function Boton({
   className = "",
   dataAccount,
 }) {
+  const handleClear = () => {
+    setUsername("");
+    setPassword("");
+    setErrorMessage(""); // Limpiar el mensaje de error
+  };
+
   return (
     <button
       type={type}
