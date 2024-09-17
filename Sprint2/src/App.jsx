@@ -21,11 +21,20 @@ function App() {
   const fixedUsername = "ITPOWERBANK";
   const fixedPassword = "2024";
 
+  // Al cargar la aplicación, chequeamos si ya hay una sesión iniciada
+  useEffect(() => {
+    const storedLoginStatus = localStorage.getItem("isLoggedIn");
+    if (storedLoginStatus === "true") {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   // Función para manejar el inicio de sesión
   const handleLogin = () => {
     if (username === fixedUsername && password === fixedPassword) {
       setIsLoggedIn(true);
       setError("");
+      localStorage.setItem("isLoggedIn", "true"); // Guardamos el estado de sesión en localStorage
     } else {
       setError("Nombre de usuario o contraseña incorrectos");
       setIsLoggedIn(false);
@@ -37,12 +46,14 @@ function App() {
     setIsLoggedIn(false);
     setUsername("");
     setPassword("");
+    localStorage.removeItem("isLoggedIn"); // Eliminamos el estado de sesión al cerrar sesión
   };
 
   return (
     <BrowserRouter>
       {isLoggedIn ? (
         //Si el usuario está logueado, mostramos el contenido de la aplicación
+        // Si el usuario está logueado, mostramos el contenido de la aplicación
         <div>
           <Header />
           <Sidebar />
@@ -60,6 +71,7 @@ function App() {
       ) : (
         //Si el usuario no está logueado, mostramos el formulario de inicio de sesión
 
+        // Si el usuario no está logueado, mostramos el formulario de inicio de sesión
         <div>
           <h1>¡Bienvenido a IT POWER BANK!</h1>
           <br />
@@ -84,4 +96,5 @@ function App() {
   );
 }
 
+export default App;
 export default App;
