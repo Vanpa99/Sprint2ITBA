@@ -23,7 +23,6 @@ body {
   padding: 10px 20px;
   color: var(--oscuro);
   border-bottom: 3px solid var(--difuminado);
-
 }
 
 .logo img {
@@ -59,7 +58,7 @@ body {
 .cont-nav {
   width: 200px;
   padding: 15px;
-  border-right: 3px solid var(--difuminado)
+  border-right: 3px solid var(--difuminado);
 }
 
 .cont-nav ul {
@@ -95,7 +94,7 @@ body {
 }
 
 .bienvenida {
-  text-align: center; 
+  text-align: center;
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
@@ -124,8 +123,8 @@ footer nav ul li a {
 }
 
 .recordatorio {
-text-align: center;
-margin-top: 3rem;
+  text-align: center;
+  margin-top: 3rem;
 }
 
 /* CUENTAS */
@@ -164,7 +163,6 @@ margin-top: 3rem;
   cursor: pointer;
 }
 
-
 /* Estilos para el resumen de cuentas */
 .account-summary {
   margin-top: 20px;
@@ -192,7 +190,7 @@ margin-top: 3rem;
   display: none;
 }
 
-.select-op{
+.select-op {
   margin-bottom: 10px;
 }
 
@@ -226,7 +224,7 @@ form input[type="reset"] {
   margin: 10px 0 0 15px;
 }
 
-input[type="number"] {
+.input-field {
   width: calc(100% - 22px);
   padding: 10px;
   border: 1px solid #ccc;
@@ -244,7 +242,7 @@ button {
   margin-bottom: 10px;
 }
 
-/* /* CONVERSOR*/ 
+/* /* CONVERSOR*/
 
 /* #monto{
   width: 50%;
@@ -310,66 +308,64 @@ input[type="number"] {
   color:var(--oscuro);
   font-weight: bold;
   font-size: 40px;
-}  */ 
+}  */
 /* MEDIAS QUERYS */
 
 /* Tablets */
 @media (max-width: 768px) {
   .encabezado {
-      flex-direction: column;
-      align-items:center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .contenedor {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .cont-nav {
-      width: 100%;
-      border-right: none;
-      border-bottom: 3px solid var(--difuminado);
-      text-align: center;
-      padding: 0;
+    width: 100%;
+    border-right: none;
+    border-bottom: 3px solid var(--difuminado);
+    text-align: center;
+    padding: 0;
   }
 
   .cont-nav nav ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 
   .cont-nav nav ul li {
-      margin-bottom: 0px;
+    margin-bottom: 0px;
   }
 
   .area-principal {
-      padding: 10px;
+    padding: 10px;
   }
 }
 
 /* CELULARES */
 @media (max-width: 523px) {
-
   .login input,
   .login button {
-      width: 100%;
-      margin: 5px 0;
+    width: 100%;
+    margin: 5px 0;
   }
 
   .login form {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .cont-nav nav ul {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .cont-nav nav ul li {
-      flex: 1 1 45%;
-      margin: 5px;
-      max-width: 100px;
+    flex: 1 1 45%;
+    margin: 5px;
+    max-width: 100px;
   }
 }
-

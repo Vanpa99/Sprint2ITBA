@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import Boton from "./Boton";
+import Boton from "./Reutilizables/Boton";
+import InputField from "./Reutilizables/InputField";
 function Moneda() {
   const [amount, setAmount] = useState(1);
   const [fromCurrency, setFromCurrency] = useState("ARS");
@@ -34,7 +35,7 @@ function Moneda() {
       <div className="formcontainer area-principal">
         <h1 className="h1contain">Conversor de moneda</h1>
         <form className="form-conv">
-          <input
+          <InputField
             type="number"
             id="monto"
             value={amount}
@@ -65,9 +66,8 @@ function Moneda() {
             <option value="CLP">CLP</option>
           </select>
 
-          <Boton  type="button" 
-            text="Convertir" />{/* DARLE FUNCIONALIDAD */}
-            
+          <Boton type="button" text="Convertir" />
+          {/* DARLE FUNCIONALIDAD */}
         </form>
         <h3 id="resultado">{result}</h3>
       </div>

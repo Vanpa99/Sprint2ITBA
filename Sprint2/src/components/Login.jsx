@@ -1,51 +1,45 @@
-import { useState } from "react";
-import Boton from "./Boton";
+import React, { useState, useRef } from "react";
+import Boton from "./Reutilizables/Boton.jsx";
+import InputField from "./Reutilizables/InputField.jsx";
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); // Estado para el mensaje de error
+  const [errorMessage, setErrorMessage] = useState("");
+  const formRef = useRef(null);
 
   const handleLogin = (e) => {
     e.preventDefault();
-
-    // Llamar a la función de inicio de sesión
     const loginSuccess = onLogin(username, password);
-
-    if (!loginSuccess) {
-      setErrorMessage("Nombre de usuario o contraseña incorrectos"); // Mostrar mensaje de error
-    } else {
-      setErrorMessage(""); // Limpiar el mensaje de error si el inicio de sesión es exitoso
-    }
+    setErrorMessage(
+      loginSuccess ? "" : "Nombre de usuario o contraseña incorrectos"
+    );
   };
 
   return (
     <div>
       <h2>Iniciar Sesión</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Usuario: </label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required // Añadir la propiedad required
-          />
-        </div>
-        <div>
-          <label>Contraseña: </label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required // Añadir la propiedad required
-          />
-        </div>
+      <form ref={formRef} onSubmit={handleLogin}>
+        <InputField
+          label="Usuario"
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Ingresa tu nombre de usuario"
+          required
+        />
+        <InputField
+          label="Contraseña"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Ingresa tu contraseña"
+          required
+        />
         <Boton type="submit" text="Iniciar Sesión" />
-        {/* <Boton type="button" text="Limpiar" onClick={handleClear} /> */}
+        <Boton type="button" text="Limpiar" formRef={formRef} />
       </form>
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}{" "}
-      {/* Mostrar mensaje de error */}
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </div>
   );
 }
