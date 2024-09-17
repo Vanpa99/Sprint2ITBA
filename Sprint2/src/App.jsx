@@ -2,13 +2,13 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Boton from "./components/Boton";
+import Boton from "./components/Reutilizables/Boton";
 import Footer from "./components/Footer";
 import Inicio from "./components/Inicio";
 import Cuentas from "./components/Cuentas";
 import Pagar from "./components/Pagar";
 import Prestamos from "./components/Prestamos";
-import Login from "./components/Login"; // Importar el componente Login
+import Login from "./components/Login";
 import "./App.css";
 
 function App() {

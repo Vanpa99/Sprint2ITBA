@@ -7,17 +7,24 @@ function Boton({
   type = "button",
   className = "",
   dataAccount,
+  formRef,
 }) {
-  const handleClear = () => {
-    setUsername("");
-    setPassword("");
-    setErrorMessage(""); // Limpiar el mensaje de error
+  const handleClick = (e) => {
+    if (onClick) {
+      onClick(e);
+    }
+    if (type === "button" && text === "Limpiar" && formRef?.current) {
+      const inputs = formRef.current.querySelectorAll("input");
+      inputs.forEach((input) => {
+        input.value = "";
+      });
+    }
   };
 
   return (
     <button
       type={type}
-      onClick={onClick}
+      onClick={handleClick}
       className={className}
       dataAccount={dataAccount}
     >
@@ -31,6 +38,8 @@ Boton.propTypes = {
   onClick: PropTypes.func,
   type: PropTypes.string,
   className: PropTypes.string,
+  dataAccount: PropTypes.string,
+  formRef: PropTypes.object,
 };
 
 export default Boton;
