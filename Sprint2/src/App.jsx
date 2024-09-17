@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
@@ -52,13 +52,11 @@ function App() {
   return (
     <BrowserRouter>
       {isLoggedIn ? (
-        //Si el usuario está logueado, mostramos el contenido de la aplicación
         // Si el usuario está logueado, mostramos el contenido de la aplicación
         <div>
           <Header />
           <Sidebar />
           <Boton text="Cerrar sesión" onClick={handleLogout} />
-          {/* <Boton text="ASHE"/> */}
 
           <Routes>
             <Route path="/" element={<Inicio />} />
@@ -69,8 +67,6 @@ function App() {
           <Footer />
         </div>
       ) : (
-        //Si el usuario no está logueado, mostramos el formulario de inicio de sesión
-
         // Si el usuario no está logueado, mostramos el formulario de inicio de sesión
         <div>
           <h1>¡Bienvenido a IT POWER BANK!</h1>
