@@ -1,63 +1,48 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import Boton from "./components/Boton";
+import Footer from "./components/Footer";
 import Inicio from "./components/Inicio";
 import Cuentas from "./components/Cuentas";
 import Pagar from "./components/Pagar";
 import Prestamos from "./components/Prestamos";
-import Footer from "./components/Footer";
+import Login from "./components/Login"; // Importar el componente Login
 import "./App.css";
-import Boton from "./components/Boton";
 
 function App() {
-  // Estado para los campos del formulario
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [error, setError] = useState("");
+  // Lista de usuarios inicial, modificar aquí para agregar más usuarios
+  const [users] = useState([
+    { username: "ITPOWERBANK", password: "2024" },
+    { username: "USUARIO1", password: "1234" }, // Agrega más usuarios aquí
+  ]);
 
-  // Credenciales fijas
-  const fixedUsername = "ITPOWERBANK";
-  const fixedPassword = "2024";
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Al cargar la aplicación, chequeamos si ya hay una sesión iniciada
-  useEffect(() => {
-    const storedLoginStatus = localStorage.getItem("isLoggedIn");
-    if (storedLoginStatus === "true") {
-      setIsLoggedIn(true);
+  const handleLogin = (username, password) => {
+    // Verificar si las credenciales coinciden con algún usuario en la lista
+    const userExists = users.some(
+      (user) => user.username === username && user.password === password
+    );
+    if (userExists) {
+      setIsAuthenticated(true);
+      return true; // Inicio de sesión exitoso
     }
-  }, []);
-
-  // Función para manejar el inicio de sesión
-  const handleLogin = () => {
-    if (username === fixedUsername && password === fixedPassword) {
-      setIsLoggedIn(true);
-      setError("");
-      localStorage.setItem("isLoggedIn", "true"); // Guardamos el estado de sesión en localStorage
-    } else {
-      setError("Nombre de usuario o contraseña incorrectos");
-      setIsLoggedIn(false);
-    }
+    return false; // Inicio de sesión fallido
   };
 
-  // Función para manejar el cierre de sesión
   const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUsername("");
-    setPassword("");
-    localStorage.removeItem("isLoggedIn"); // Eliminamos el estado de sesión al cerrar sesión
+    setIsAuthenticated(false);
   };
 
   return (
     <BrowserRouter>
-      {isLoggedIn ? (
-        // Si el usuario está logueado, mostramos el contenido de la aplicación
-        <div>
+      {isAuthenticated ? (
+        <>
           <Header />
           <Sidebar />
           <Boton text="Cerrar sesión" onClick={handleLogout} />
-
           <Routes>
             <Route path="/" element={<Inicio />} />
             <Route path="/cuentas" element={<Cuentas />} />
@@ -65,28 +50,9 @@ function App() {
             <Route path="/prestamos" element={<Prestamos />} />
           </Routes>
           <Footer />
-        </div>
+        </>
       ) : (
-        // Si el usuario no está logueado, mostramos el formulario de inicio de sesión
-        <div>
-          <h1>¡Bienvenido a IT POWER BANK!</h1>
-          <br />
-          <h3>Por favor, ingrese sus credenciales para iniciar sesión:</h3>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Nombre de usuario"
-          />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Contraseña"
-          />
-          <Boton text="Iniciar sesión" onClick={handleLogin} />
-          {error && <p style={{ color: "red" }}>{error}</p>}
-        </div>
+        <Login onLogin={handleLogin} />
       )}
     </BrowserRouter>
   );
