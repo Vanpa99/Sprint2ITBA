@@ -1,10 +1,17 @@
 import { useState } from "react";
 import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
+import Selector from "./Reutilizables/Selector"; // Importar el selector reutilizable
 
 function Pagar() {
   const [accion, setAccion] = useState("transferencia");
   const [mensaje, setMensaje] = useState("");
+
+  // Opciones para el selector de acciones
+  const opcionesAccion = [
+    { value: "transferencia", label: "Transferencia" },
+    { value: "pago", label: "Pago" }
+  ];
 
   // Handler para el envío del formulario
   const handleSubmit = (e) => {
@@ -35,16 +42,13 @@ function Pagar() {
       <h2 className="bienvenida">Métodos de Pago</h2>
 
       <section>
-        <label htmlFor="accion">Seleccione el tipo de operación: </label>
-        <select
+        {/* Reemplazamos el selector nativo con el componente Selector */}
+        <Selector
           name="accion"
-          id="accion"
-          value={accion}
+          label="Seleccione el tipo de operación:"
+          options={opcionesAccion}
           onChange={(e) => setAccion(e.target.value)}
-        >
-          <option value="transferencia">Transferencia</option>
-          <option value="pago">Pago</option>
-        </select>
+        />
       </section>
 
       <form onSubmit={handleSubmit}>
@@ -79,7 +83,6 @@ function Pagar() {
               placeholder="Ingresa el código de pago"
               required
             />
-            {/* CORREGIR BOTON ENVIAR EN PAGO */}
           </article>
         )}
         <Boton type="submit" text="Enviar" id="enviarFormu" />

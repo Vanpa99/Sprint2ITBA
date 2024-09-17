@@ -1,19 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Boton from "./Reutilizables/Boton";
+import Selector from "./Reutilizables/Selector";
 
 function Cuentas() {
+  const [monedaSeleccionada, setMonedaSeleccionada] = useState("USD");
+
   useEffect(() => {
     const modal = document.getElementById("accountModal");
     const closeModal = document.querySelector(".close");
     const modalAccountNumber = document.getElementById("modalAccountNumber");
 
-    // Función para abrir el modal con la información de la cuenta
     function openModal(accountNumber) {
       modalAccountNumber.textContent = "Número de Cuenta: " + accountNumber;
       modal.style.display = "block";
     }
 
-    // Agregar evento de clic a los botones de detalles
     document.querySelectorAll(".details-btn").forEach((button) => {
       button.addEventListener("click", function () {
         const accountNumber = this.getAttribute("dataAccount");
@@ -21,34 +22,39 @@ function Cuentas() {
       });
     });
 
-    // Cerrar el modal al hacer clic en la "X"
     closeModal.addEventListener("click", function () {
       modal.style.display = "none";
     });
 
-    // Cerrar el modal al hacer clic fuera del contenido del modal
     window.addEventListener("click", function (event) {
       if (event.target === modal) {
         modal.style.display = "none";
       }
     });
 
-    // Cleanup: Eliminar los event listeners cuando el componente se desmonte
     return () => {
       document.querySelectorAll(".details-btn").forEach((button) => {
         button.removeEventListener("click", openModal);
       });
-      closeModal.removeEventListener(
-        "click",
-        () => (modal.style.display = "none")
-      );
+      closeModal.removeEventListener("click", () => (modal.style.display = "none"));
       window.removeEventListener("click", (event) => {
         if (event.target === modal) {
           modal.style.display = "none";
         }
       });
     };
-  }, []); // El array vacío asegura que useEffect se ejecute solo una vez, después de que el componente se monte
+  }, []);
+
+  const opcionesMoneda = [
+    { value: "ARS", label: "ARS" },
+    { value: "USD", label: "USD" },
+    { value: "EUR", label: "EUR" },
+    { value: "MEX", label: "MEX" },
+  ];
+
+  const manejarCambioMoneda = (e) => {
+    setMonedaSeleccionada(e.target.value);
+  };
 
   return (
     <div>
@@ -63,7 +69,17 @@ function Cuentas() {
           <tr>
             <th>Tipo de Cuenta</th>
             <th>Número de Cuenta</th>
-            <th>Saldo</th>
+            <th>
+              <div>
+                Saldo
+                <Selector
+                  name="moneda"
+                  label=""
+                  options={opcionesMoneda} // Aquí pasas las opciones de moneda
+                  onChange={manejarCambioMoneda}
+                />
+              </div>
+            </th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -125,3 +141,5 @@ function Cuentas() {
 }
 
 export default Cuentas;
+
+
