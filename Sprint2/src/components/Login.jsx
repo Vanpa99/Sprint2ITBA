@@ -26,10 +26,16 @@ function Login({ onLoginSuccess }) {
     }
   };
 
+  const handleClear = () => {
+    setUsername("");
+    setPassword("");
+    setErrorMessage("");
+  };
+
   return (
     <div>
       <h2>Iniciar Sesión</h2>
-      <form ref={formRef} onSubmit={handleLogin}>
+      <form ref={formRef} onSubmit={handleLogin} autoComplete="off"> {/* FALTABA APAGAR AUTOCOMPLETE */}
         <InputField
           label="Usuario"
           type="text"
@@ -37,6 +43,7 @@ function Login({ onLoginSuccess }) {
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Ingresa tu nombre de usuario"
           required
+          autoComplete="off"  // FALTABA AUTOCOMPLETE
         />
         <InputField
           label="Contraseña"
@@ -45,9 +52,10 @@ function Login({ onLoginSuccess }) {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Ingresa tu contraseña"
           required
+          autoComplete="off"  // FALTABA AUTOCOMPLETE
         />
         <Boton type="submit" text="Iniciar Sesión" />
-        <Boton type="button" text="Limpiar" formRef={formRef} />
+        <Boton type="button" text="Limpiar" onClick={handleClear} /> {/* FALTABA HANDLE CLEAR */}
       </form>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </div>

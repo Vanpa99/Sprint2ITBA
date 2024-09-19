@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Boton from "./Reutilizables/Boton";
+import BotonCambioMoneda from "./Reutilizables/BotonCambioMoneda"; 
 
 function Cuentas() {
   useEffect(() => {
@@ -71,7 +72,7 @@ function Cuentas() {
           <tr>
             <td>Cuenta Corriente</td>
             <td>123-456789-00</td>
-            <td>$50,000</td>
+            <td><BotonCambioMoneda saldo={50000} fromCurrency="ARS" /></td>
             <td>
               <Boton
                 text="Ver Detalles"
@@ -83,7 +84,7 @@ function Cuentas() {
           <tr>
             <td>Caja de Ahorro</td>
             <td>987-654321-00</td>
-            <td>$15,300</td>
+            <td><BotonCambioMoneda saldo={15300} fromCurrency="ARS" /></td>
             <td>
               <Boton
                 text="Ver Detalles"

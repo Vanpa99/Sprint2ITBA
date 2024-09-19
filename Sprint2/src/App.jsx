@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
@@ -19,6 +19,7 @@ function App() {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
+    localStorage.removeItem("isAuthenticated"); // Eliminar la sesión de localStorage
   };
 
   return (

@@ -6,7 +6,7 @@ function Moneda() {
   const [fromCurrency, setFromCurrency] = useState("ARS");
   const [toCurrency, setToCurrency] = useState("USD");
   const [result, setResult] = useState(null);
-  const apiKey = "1576dd9857d0635c1b77f50e"; /* clave de api */ /* y url */
+  const apiKey = "bd185bc85411a96d84116f03"; /* clave de api */ /* y url */
   const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
 
   useEffect(() => {

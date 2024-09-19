@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Moneda from "./Moneda";
-import Card from "./Card";
+// import Card from "./Card";
 
 function Inicio() {
   //CONVERSOR DE MONEDA
