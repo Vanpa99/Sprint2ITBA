@@ -1,10 +1,17 @@
 import { useState } from "react";
 import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
+import Selector from "./Reutilizables/Selector";
 
 function Pagar() {
   const [accion, setAccion] = useState("transferencia");
   const [mensaje, setMensaje] = useState("");
+
+  // Opciones para el selector de acciones
+  const opcionesAccion = [
+    { value: "transferencia", label: "Transferencia" },
+    { value: "pago", label: "Pago" },
+  ]; // MANDAR A "SELECTOR" (y hacer que funcione)
 
   // Handler para el envío del formulario
   const handleSubmit = (e) => {
@@ -34,18 +41,12 @@ function Pagar() {
     <>
       <h2 className="section-title">Métodos de Pago</h2>
 
-      <section>
-        <label htmlFor="accion">Seleccione el tipo de operación: </label>
-        <select
-          name="accion"
-          id="accion"
-          value={accion}
-          onChange={(e) => setAccion(e.target.value)}
-        >
-          <option value="transferencia">Transferencia</option>
-          <option value="pago">Pago</option>
-        </select>
-      </section>
+      <Selector
+        name="accion"
+        label="Seleccione el tipo de operación:"
+        options={opcionesAccion}
+        onChange={(e) => setAccion(e.target.value)}
+      />
 
       <form onSubmit={handleSubmit}>
         {accion === "transferencia" && (

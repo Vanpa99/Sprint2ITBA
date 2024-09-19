@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
+import Selector from "./Reutilizables/Selector"; // Importamos el Selector reutilizable
 function Moneda() {
   const [amount, setAmount] = useState(1);
   const [fromCurrency, setFromCurrency] = useState("ARS");
   const [toCurrency, setToCurrency] = useState("USD");
   const [result, setResult] = useState(null);
-  const apiKey = "bd185bc85411a96d84116f03"; /* clave de api */ /* y url */
+  const apiKey = "bd185bc85411a96d84116f03"; // Clave de API
   const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
 
   useEffect(() => {
@@ -29,6 +30,16 @@ function Moneda() {
         });
     }
   }, [amount, fromCurrency, toCurrency, url]);
+  // CREAR COMPONENTE DE API PARA LLAMARLA EN CUALQUIER LADO
+
+  // Opciones de monedas
+  const currencyOptions = [
+    { value: "ARS", label: "ARS" },
+    { value: "USD", label: "USD" },
+    { value: "EUR", label: "EUR" },
+    { value: "BRL", label: "BRL" },
+    { value: "CLP", label: "CLP" },
+  ]; // MANDAR A "SELECTOR" (y hacer que funcione)
 
   return (
     <section>
@@ -40,43 +51,30 @@ function Moneda() {
         </p>
       </section>
 
-      <div className="form-container">
+      <form className="form-conv form-container">
         <InputField
           label="Monto a convertir:"
-          for="monto"
           type="number"
           id="monto"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          placeholder={"Ingrese monto"}
+          placeholder="Ingrese monto"
         />
-        <label> De:</label>
-        <select
-          className="deMoneda"
+        <Selector
+          name="fromCurrency"
+          label="De:"
+          options={currencyOptions}
           value={fromCurrency}
           onChange={(e) => setFromCurrency(e.target.value)}
-        >
-          <option value="ARS">ARS</option>
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-          <option value="BRL">BRL</option>
-          <option value="CLP">CLP</option>
-        </select>
-        <label> A: </label>
-        <select
-          className="aMoneda"
+        />
+        <Selector
+          name="toCurrency"
+          label="A:"
+          options={currencyOptions}
           value={toCurrency}
           onChange={(e) => setToCurrency(e.target.value)}
-        >
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-          <option value="ARS">ARS</option>
-          <option value="BRL">BRL</option>
-          <option value="CLP">CLP</option>
-        </select>
-
-        <Boton type="button" text="Convertir" />
-
+        />
+        <Boton type="button" text="Convertir" /> {/* DARLE FUNCIONALIDAD*/}
         <InputField
           label="Monto convertido:"
           for="result"
@@ -86,7 +84,7 @@ function Moneda() {
           placeholder="Monto convertido"
           disabled
         />
-      </div>
+      </form>
     </section>
   );
 }
