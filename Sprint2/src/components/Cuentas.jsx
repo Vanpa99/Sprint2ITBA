@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import Boton from "./Reutilizables/Boton";
-import BotonCambioMoneda from "./Reutilizables/BotonCambioMoneda"; 
+import BotonCambioMoneda from "./Reutilizables/BotonCambioMoneda";
+import Selector from "./Reutilizables/Selector";
 
 function Cuentas() {
+  const [monedaSeleccionada, setMonedaSeleccionada] = useState("USD"); // USD por defecto
   useEffect(() => {
     const modal = document.getElementById("accountModal");
     const closeModal = document.querySelector(".close");
@@ -51,6 +53,17 @@ function Cuentas() {
     };
   }, []); // El array vacío asegura que useEffect se ejecute solo una vez, después de que el componente se monte
 
+  const opcionesMoneda = [
+    { value: "ARS", label: "ARS" },
+    { value: "USD", label: "USD" },
+    { value: "EUR", label: "EUR" },
+    { value: "MEX", label: "MEX" },
+  ]; //MANDAR A "SELECTOR" (y hacer que funcione )
+
+  const manejarCambioMoneda = (e) => {
+    setMonedaSeleccionada(e.target.value);
+  }; //MANDAR A "SELECTOR" (y hacer que funcione )
+
   return (
     <div>
       <h2 className="bienvenida">Mis Cuentas</h2>
@@ -64,7 +77,18 @@ function Cuentas() {
           <tr>
             <th>Tipo de Cuenta</th>
             <th>Número de Cuenta</th>
-            <th>Saldo</th>
+            <th>
+              Saldo
+              <div>
+                {/* <Selector
+                  name="moneda"
+                  label=""
+                  options={opcionesMoneda} // Aquí pasas las opciones de moneda
+                  onChange={manejarCambioMoneda}
+                /> */}
+                {/*si lo hacen asi les toco el nepe*/}
+              </div>
+            </th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -72,7 +96,9 @@ function Cuentas() {
           <tr>
             <td>Cuenta Corriente</td>
             <td>123-456789-00</td>
-            <td><BotonCambioMoneda saldo={50000} fromCurrency="ARS" /></td>
+            <td>
+              <BotonCambioMoneda saldo={50000} fromCurrency="ARS" />
+            </td>
             <td>
               <Boton
                 text="Ver Detalles"
@@ -84,7 +110,9 @@ function Cuentas() {
           <tr>
             <td>Caja de Ahorro</td>
             <td>987-654321-00</td>
-            <td><BotonCambioMoneda saldo={15300} fromCurrency="ARS" /></td>
+            <td>
+              <BotonCambioMoneda saldo={15300} fromCurrency="ARS" />
+            </td>
             <td>
               <Boton
                 text="Ver Detalles"

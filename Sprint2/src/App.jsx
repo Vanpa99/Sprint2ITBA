@@ -15,7 +15,7 @@ function App() {
   const [users] = useState([
     { username: "ITPOWERBANK", password: "2024" },
     { username: "USUARIO", password: "1234" },
-  ]);
+  ]); // MANDAR A "LOGIN" (y hacer que funcione)
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -37,7 +37,7 @@ function App() {
       return true;
     }
     return false;
-  };
+  }; // MANDAR A "LOGIN" (y hacer que funcione)
 
   const handleLogout = () => {
     setIsAuthenticated(false);
