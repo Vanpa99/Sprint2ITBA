@@ -66,7 +66,7 @@ function Cuentas() {
 
   return (
     <div>
-      <h2 className="bienvenida">Mis Cuentas</h2>
+      <h2 className="section-title">Mis Cuentas</h2>
       <p className="p-cuentas">
         Aquí puedes ver y gestionar todas tus cuentas bancarias.
       </p>

@@ -27,6 +27,7 @@ function Boton({
       onClick={handleClick}
       className={className}
       dataAccount={dataAccount}
+      autoComplete="off"
     >
       {text}
     </button>
