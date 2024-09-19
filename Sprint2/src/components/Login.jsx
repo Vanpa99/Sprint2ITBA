@@ -8,7 +8,7 @@ const users = [
   { username: "USUARIO1", password: "1234" },
 ];
 
-function Login({ onLoginSuccess }) {
+function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -16,14 +16,10 @@ function Login({ onLoginSuccess }) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const userExists = users.some(
-      (user) => user.username === username && user.password === password
+    const loginSuccess = onLogin(username, password);
+    setErrorMessage(
+      loginSuccess ? "" : "Nombre de usuario o contraseña incorrectos"
     );
-    if (userExists) {
-      onLoginSuccess();
-    } else {
-      setErrorMessage("Nombre de usuario o contraseña incorrectos");
-    }
   };
 
   const handleClear = () => {
@@ -62,10 +58,5 @@ function Login({ onLoginSuccess }) {
   );
 }
 
-Login.propTypes = {
-  onLoginSuccess: PropTypes.func.isRequired,
-};
-
 export default Login;
-
 // ORIGINAL;
