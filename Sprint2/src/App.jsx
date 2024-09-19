@@ -15,7 +15,7 @@ function App() {
   // Lista de usuarios inicial
   const [users] = useState([
     { username: "ITPOWERBANK", password: "2024" },
-    { username: "USUARIO1", password: "1234" },
+    { username: "USUARIO", password: "1234" },
   ]);
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
