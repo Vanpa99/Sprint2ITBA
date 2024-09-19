@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
@@ -12,28 +12,37 @@ import Login from "./components/Login";
 import "./App.css";
 
 function App() {
-  // Lista de usuarios inicial, modificar aquí para agregar más usuarios
+  // Lista de usuarios inicial
   const [users] = useState([
     { username: "ITPOWERBANK", password: "2024" },
-    { username: "USUARIO1", password: "1234" }, // Agrega más usuarios aquí
+    { username: "USUARIO1", password: "1234" },
   ]);
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  // Verificar si ya hay una sesión activa en localStorage cuando el componente se monta
+  useEffect(() => {
+    const storedAuth = localStorage.getItem("isAuthenticated");
+    if (storedAuth === "true") {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
   const handleLogin = (username, password) => {
-    // Verificar si las credenciales coinciden con algún usuario en la lista
     const userExists = users.some(
       (user) => user.username === username && user.password === password
     );
     if (userExists) {
       setIsAuthenticated(true);
-      return true; // Inicio de sesión exitoso
+      localStorage.setItem("isAuthenticated", "true"); // Guardar la sesión en localStorage
+      return true;
     }
-    return false; // Inicio de sesión fallido
+    return false;
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
+    localStorage.removeItem("isAuthenticated"); // Eliminar la sesión de localStorage
   };
 
   return (
