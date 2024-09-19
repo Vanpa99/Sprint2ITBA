@@ -7,10 +7,10 @@ function Header({ handleLogout }) {
   return (
     <header className="encabezado">
       <div className="logo">
-        <img src={Logo} width="50px" height="50px" alt="Logo de la Empresa" />
+        <img src={Logo} alt="Logo de la Empresa" />
       </div>
       <h2 className="saludo">¡Bienvenido!</h2>
-      <Boton text="Cerrar sesión" onClick={handleLogout} />
+      <Boton text="Cerrar sesión" onClick={handleLogout} className="no-flex" />
     </header>
   );
 }

@@ -28,13 +28,11 @@ function Login({ onLogin }) {
   };
 
   return (
-    <div>
-      <h2>Iniciar Sesión</h2>
+    <div className="form-container">
+      <h2 className="section-title">Iniciar Sesión</h2>
       <form ref={formRef} onSubmit={handleLogin} autoComplete="off">
-        {" "}
-        {/* FALTABA APAGAR AUTOCOMPLETE */}
         <InputField
-          label="Usuario"
+          label="Usuario:"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -43,7 +41,7 @@ function Login({ onLogin }) {
           autoComplete="off" // FALTABA AUTOCOMPLETE
         />
         <InputField
-          label="Contraseña"
+          label="Contraseña:"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -51,9 +49,11 @@ function Login({ onLogin }) {
           required
           autoComplete="off" // FALTABA AUTOCOMPLETE
         />
-        <Boton type="submit" text="Iniciar Sesión" />
-        <Boton type="button" text="Limpiar" onClick={handleClear} />{" "}
-        {/* FALTABA HANDLE CLEAR */}
+        <div className="btn-container">
+          <Boton type="submit" text="Iniciar Sesión" />
+          <Boton type="button" text="Limpiar" onClick={handleClear} />
+          {/* FALTABA HANDLE CLEAR */}
+        </div>
       </form>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </div>
