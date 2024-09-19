@@ -105,12 +105,6 @@ function Cuentas() {
         </ul>
       </div>
 
-      {/* Gráfico ilustrativo */}
-      <div className="account-charts">
-        <h3>Resumen en Gráficos</h3>
-        <img src="grafico-ejemplo.png" alt="Gráfico de ejemplo de saldos" />
-      </div>
-
       {/* Modal */}
       <div id="accountModal" className="modal">
         <div className="modal-content">
