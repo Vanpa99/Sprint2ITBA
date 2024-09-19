@@ -32,7 +32,7 @@ function Pagar() {
 
   return (
     <>
-      <h2 className="bienvenida">Métodos de Pago</h2>
+      <h2 className="section-title">Métodos de Pago</h2>
 
       <section>
         <label htmlFor="accion">Seleccione el tipo de operación: </label>
