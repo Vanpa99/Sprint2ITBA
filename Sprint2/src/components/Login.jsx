@@ -1,8 +1,14 @@
 import React, { useState, useRef } from "react";
+import PropTypes from "prop-types";
 import Boton from "./Reutilizables/Boton.jsx";
 import InputField from "./Reutilizables/InputField.jsx";
 
-function Login({ onLogin }) {
+const users = [
+  { username: "ITPOWERBANK", password: "2024" },
+  { username: "USUARIO1", password: "1234" },
+];
+
+function Login({ onLoginSuccess }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -10,10 +16,14 @@ function Login({ onLogin }) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const loginSuccess = onLogin(username, password);
-    setErrorMessage(
-      loginSuccess ? "" : "Nombre de usuario o contraseña incorrectos"
+    const userExists = users.some(
+      (user) => user.username === username && user.password === password
     );
+    if (userExists) {
+      onLoginSuccess();
+    } else {
+      setErrorMessage("Nombre de usuario o contraseña incorrectos");
+    }
   };
 
   const handleClear = () => {
@@ -52,4 +62,10 @@ function Login({ onLogin }) {
   );
 }
 
+Login.propTypes = {
+  onLoginSuccess: PropTypes.func.isRequired,
+};
+
 export default Login;
+
+// ORIGINAL;

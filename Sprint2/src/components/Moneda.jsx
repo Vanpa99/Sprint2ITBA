@@ -31,45 +31,61 @@ function Moneda() {
   }, [amount, fromCurrency, toCurrency, url]);
 
   return (
-    <section className="contenedor">
-      <div className="formcontainer area-principal">
-        <h1 className="h1contain">Conversor de moneda</h1>
-        <form className="form-conv">
-          <InputField
-            type="number"
-            id="monto"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            placeholder="Cantidad"
-          />
-          <select
-            className="deMoneda"
-            value={fromCurrency}
-            onChange={(e) => setFromCurrency(e.target.value)}
-          >
-            <option value="ARS">ARS</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="BRL">BRL</option>
-            <option value="CLP">CLP</option>
-          </select>
-          <span> a </span>
-          <select
-            className="aMoneda"
-            value={toCurrency}
-            onChange={(e) => setToCurrency(e.target.value)}
-          >
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="ARS">ARS</option>
-            <option value="BRL">BRL</option>
-            <option value="CLP">CLP</option>
-          </select>
+    <section>
+      <section className="beneficios">
+        <h3>Convertidor de Monedas</h3>
+        <p>
+          A continuacion le dejamos un convertidor de monedas, para convertir la
+          moneda que usted desee:
+        </p>
+      </section>
 
-          <Boton type="button" text="Convertir" />
-          {/* DARLE FUNCIONALIDAD */}
-        </form>
-        <h3 id="resultado">{result}</h3>
+      <div className="form-container">
+        <InputField
+          label="Monto a convertir:"
+          for="monto"
+          type="number"
+          id="monto"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          placeholder={"Ingrese monto"}
+        />
+        <label> De:</label>
+        <select
+          className="deMoneda"
+          value={fromCurrency}
+          onChange={(e) => setFromCurrency(e.target.value)}
+        >
+          <option value="ARS">ARS</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="BRL">BRL</option>
+          <option value="CLP">CLP</option>
+        </select>
+        <label> A: </label>
+        <select
+          className="aMoneda"
+          value={toCurrency}
+          onChange={(e) => setToCurrency(e.target.value)}
+        >
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="ARS">ARS</option>
+          <option value="BRL">BRL</option>
+          <option value="CLP">CLP</option>
+        </select>
+
+        <Boton type="button" text="Convertir" />
+
+        <InputField
+          label="Monto convertido:"
+          for="result"
+          type="text"
+          id="result"
+          value={result || ""}
+          placeholder="Monto convertido"
+          disabled
+        />
       </div>
     </section>
   );

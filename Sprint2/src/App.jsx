@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Boton from "./components/Reutilizables/Boton";
 import Footer from "./components/Footer";
 import Inicio from "./components/Inicio";
 import Cuentas from "./components/Cuentas";
@@ -20,24 +19,8 @@ function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Verificar si ya hay una sesión activa en localStorage cuando el componente se monta
-  useEffect(() => {
-    const storedAuth = localStorage.getItem("isAuthenticated");
-    if (storedAuth === "true") {
-      setIsAuthenticated(true);
-    }
-  }, []);
-
-  const handleLogin = (username, password) => {
-    const userExists = users.some(
-      (user) => user.username === username && user.password === password
-    );
-    if (userExists) {
-      setIsAuthenticated(true);
-      localStorage.setItem("isAuthenticated", "true"); // Guardar la sesión en localStorage
-      return true;
-    }
-    return false;
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
   };
 
   const handleLogout = () => {
@@ -49,22 +32,27 @@ function App() {
     <BrowserRouter>
       {isAuthenticated ? (
         <>
-          <Header />
-          <Sidebar />
-          <Boton text="Cerrar sesión" onClick={handleLogout} />
-          <Routes>
-            <Route path="/" element={<Inicio />} />
-            <Route path="/cuentas" element={<Cuentas />} />
-            <Route path="/pagar" element={<Pagar />} />
-            <Route path="/prestamos" element={<Prestamos />} />
-          </Routes>
+          <Header handleLogout={handleLogout} />
+          <div className="contenedor">
+            <Sidebar />
+            <div className="area-principal">
+              <Routes>
+                <Route path="/" element={<Inicio />} />
+                <Route path="/cuentas" element={<Cuentas />} />
+                <Route path="/pagar" element={<Pagar />} />
+                <Route path="/prestamos" element={<Prestamos />} />
+              </Routes>
+            </div>
+          </div>
           <Footer />
         </>
       ) : (
-        <Login onLogin={handleLogin} />
+        <Login onLoginSuccess={handleLoginSuccess} />
       )}
     </BrowserRouter>
   );
 }
 
 export default App;
+
+// ORIGINAL
