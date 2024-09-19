@@ -80,9 +80,9 @@ function Moneda() {
         <InputField
           label="Monto convertido:"
           for="result"
-          type="number"
+          type="text"
           id="result"
-          value={result}
+          value={result || ""}
           placeholder="Monto convertido"
           disabled
         />
