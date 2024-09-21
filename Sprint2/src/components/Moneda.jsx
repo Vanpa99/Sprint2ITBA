@@ -40,9 +40,9 @@ function Moneda() {
       <section className="beneficios">
         <h3>Convertidor de Monedas</h3>
         <p className="info-form">
-          A continuacion le dejamos un convertidor de monedas, para convertir la
-          moneda que usted desee:
+          A continuacion le ofrecemos nuestro servicio de convertidor de monedas:
         </p>
+        <br />
       </section>
 
       <form className="form-container" ref={formRef}>

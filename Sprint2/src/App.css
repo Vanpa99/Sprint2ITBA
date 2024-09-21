@@ -134,6 +134,8 @@ footer nav ul li a {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+
+  
 }
 
 .accounts-table th,
@@ -264,7 +266,24 @@ button {
   .area-principal {
     padding: 10px;
   }
+
+  .accounts-table {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Hacemos que las columnas ocupen el ancho completo */
+    grid-auto-rows: auto;
+  }
+
+  .accounts-table th,
+  .accounts-table td {
+    padding: 8px;
+    font-size: 14px; /* Reducimos el tamaño del texto para pantallas más pequeñas */
+  }
+
+  .account-summary ul li {
+    font-size: 14px; /* Ajustamos el tamaño de las fuentes */
+    padding: 8px;
+  }
 }
+
 
 /* CELULARES */
 @media (max-width: 523px) {
@@ -288,5 +307,48 @@ button {
     flex: 1 1 45%;
     margin: 5px;
     max-width: 100px;
+  }
+
+  .accounts-table {
+    grid-template-columns: 1fr; /* En pantallas muy pequeñas, mostramos una sola columna */
+  }
+
+  .accounts-table th,
+  .accounts-table td {
+    font-size: 12px; /* Reducimos aún más el tamaño del texto */
+    padding: 6px;
+  }
+
+  .account-summary h3 {
+    font-size: 18px; /* Ajustamos el tamaño del título en el resumen de cuentas */
+  }
+
+  .account-summary ul li {
+    font-size: 12px;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 350px) {
+  .accounts-table {
+    display: block; /* Cambiamos a block para evitar el desbordamiento del grid */
+    overflow-x: auto; /* Habilitamos desplazamiento horizontal si es necesario */
+  }
+
+  .accounts-table table {
+    width: 100%; /* Aseguramos que la tabla ocupe el ancho completo */
+    table-layout: fixed; /* Evitamos que las columnas crezcan fuera de control */
+  }
+
+  .accounts-table th,
+  .accounts-table td {
+    word-wrap: break-word; /* Ajustamos el texto dentro de las celdas */
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  /* Si hay una tabla con muchas columnas, la hacemos desplazable horizontalmente */
+  .accounts-table {
+    overflow-x: auto;
   }
 }
