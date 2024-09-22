@@ -9,17 +9,43 @@ function Boton({
   dataAccount,
   formRef,
 }) {
+  // const handleClick = (e) => {
+  //   if (onClick) {
+  //     onClick(e);
+  //   }
+  //   if (type === "button" && text === "Limpiar" && formRef?.current) {
+  //     const inputs = formRef.current.querySelectorAll("input");
+  //     inputs.forEach((input) => {
+  //       input.value = "";
+  //     });
+  //   }
+  // };
+
   const handleClick = (e) => {
+    // Ejecutar la función onClick si está definida
     if (onClick) {
       onClick(e);
     }
+  
+    // Si el botón es de tipo "Limpiar" y tenemos una referencia al formulario
     if (type === "button" && text === "Limpiar" && formRef?.current) {
-      const inputs = formRef.current.querySelectorAll("input");
+      // Limpia todos los inputs dentro del formulario (usando el DOM)
+      const inputs = formRef.current.querySelectorAll("input, textarea");
       inputs.forEach((input) => {
-        input.value = "";
+        if (input.type === "checkbox" || input.type === "radio") {
+          input.checked = false; // Desmarcar checkboxes y radios
+        } else {
+          input.value = ""; // Limpiar otros tipos de inputs
+        }
       });
+  
+      // Si hay una función onClear pasada como prop, la llamamos (esto es opcional)
+      if (onClear) {
+        onClear(); // Permitir que el componente padre haga cualquier limpieza adicional de estados
+      }
     }
   };
+  
 
   return (
     <button

@@ -89,7 +89,7 @@ function Pagar() {
         )}
         <div className="btn-container">
           <Boton type="submit" text="Enviar" id="enviarFormu" />
-          <Boton type="reset" text="Limpiar" onClick={clearInputs} />
+          <Boton type="reset" text="Limpiar" onClick={clearInputs} onClear={() => {}}/>
         </div>
       </form>
 

@@ -70,7 +70,7 @@ function Prestamos() {
         />
         <div className="btn-container">
           <Boton type="submit" text="Calcular" />
-          <Boton type="button" text="Limpiar" formRef={formRef} />
+          <Boton type="button" text="Limpiar" formRef={formRef} onClear={() => {}}/>
         </div>
         <InputField
           htmlFor="resultado"
