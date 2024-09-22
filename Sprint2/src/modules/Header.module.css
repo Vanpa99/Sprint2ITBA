@@ -1,0 +1,17 @@
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: var(--oscuro);
+  border-bottom: 3px solid var(--difuminado);
+  background-color: var(--difuminado);
+}
+
+.logo img {
+  height: 50px;
+}
+
+.noFlex {
+  flex-grow: 0;
+}

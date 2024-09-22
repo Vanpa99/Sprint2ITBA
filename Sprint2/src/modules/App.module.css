@@ -1,0 +1,9 @@
+.contenedor {
+  display: flex;
+  flex: 1;
+}
+
+.areaPrincipal {
+  padding: 20px;
+  flex: 1;
+}

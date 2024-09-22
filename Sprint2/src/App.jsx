@@ -8,7 +8,8 @@ import Cuentas from "./components/Cuentas";
 import Pagar from "./components/Pagar";
 import Prestamos from "./components/Prestamos";
 import Login from "./components/Login";
-import "./App.css";
+import styles from "./modules/App.module.css";
+import "./Global.css";
 
 function App() {
   // Lista de usuarios inicial
@@ -49,9 +50,9 @@ function App() {
       {isAuthenticated ? (
         <>
           <Header handleLogout={handleLogout} />
-          <div className="contenedor">
+          <div className={styles.contenedor}>
             <Sidebar />
-            <div className="area-principal">
+            <div className={styles.areaPrincipal}>
               <Routes>
                 <Route path="/" element={<Inicio />} />
                 <Route path="/cuentas" element={<Cuentas />} />

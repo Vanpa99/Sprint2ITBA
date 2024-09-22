@@ -1,0 +1,25 @@
+.inicioContenido {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.inicioDescripcion {
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.beneficios {
+  padding: 20px;
+}
+
+.beneficios h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}

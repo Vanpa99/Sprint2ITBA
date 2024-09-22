@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
 import Selector from "./Reutilizables/Selector"; // Importamos el Selector reutilizable
+import styles from "../modules/Moneda.module.css";
+
 function Moneda() {
   const [amount, setAmount] = useState(1);
   const [fromCurrency, setFromCurrency] = useState("ARS");
@@ -37,15 +39,16 @@ function Moneda() {
 
   return (
     <section>
-      <section className="beneficios">
-        <h3>Convertidor de Monedas</h3>
-        <p className="info-form">
-          A continuacion le ofrecemos nuestro servicio de convertidor de monedas:
+      <section>
+        <h3 className={styles.sectionTitle}>Convertidor de Monedas</h3>
+        <p className={styles.infoForm}>
+          A continuacion le ofrecemos nuestro servicio de convertidor de
+          monedas:
         </p>
         <br />
       </section>
 
-      <form className="form-container" ref={formRef}>
+      <form className={styles.formContainer} ref={formRef}>
         <Selector
           label="Monto a convertir:"
           name="fromCurrency"
@@ -60,7 +63,7 @@ function Moneda() {
           onChange={(e) => setAmount(e.target.value)}
           placeholder="Ingrese monto"
         />
-        <div className="btn-container">
+        <div className={styles.btnContainer}>
           <Boton type="button" text="Convertir" /> {/* DARLE FUNCIONALIDAD*/}
           <Boton type="button" text="Limpiar" formRef={formRef} />
         </div>

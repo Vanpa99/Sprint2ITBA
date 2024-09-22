@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --claro: #ebf4fb;
   --oscuro: #172630;
   --difuminado: #17263028;
@@ -8,32 +8,26 @@
   margin: 0;
   padding: 0;
 }
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: var(--claro);
-}
 
-/* body {
+#root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background-color: var(--claro);
 } */
 
-.encabezado {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  color: var(--oscuro);
-  border-bottom: 3px solid var(--difuminado);
-}
+/* .encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: var(--oscuro);
+    border-bottom: 3px solid var(--difuminado);
+  } */
 
-.logo img {
+/* .logo img {
   height: 50px;
-}
+} */
 
 .login form {
   display: flex;
@@ -46,7 +40,7 @@
   border: 1px solid var(--difuminado);
   border-radius: 3px;
 }
-
+/* en login  */
 .login button {
   padding: 5px 10px;
   border: none;
@@ -56,10 +50,10 @@
   cursor: pointer;
 }
 
-.contenedor {
+/* .contenedor {
   display: flex;
   flex: 1;
-}
+} */
 
 .cont-nav {
   width: 200px;
@@ -89,17 +83,18 @@
   background-color: var(--difuminado);
 }
 
-.area-principal {
+/* .area-principal {
   padding: 20px;
   flex: 1;
-}
+} */
 
 .p-cuentas {
   text-align: center;
   margin-top: -1rem;
 }
 
-.section-title {
+/* mandar a global */
+.sectionTitle {
   text-align: center;
   margin-bottom: 1rem;
   font-size: 1.5rem;
@@ -134,8 +129,6 @@ footer nav ul li a {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-
-  
 }
 
 .accounts-table th,
@@ -181,9 +174,9 @@ footer nav ul li a {
 /* TRANSFERENCIAS */
 
 /* .input-pago,
-.input-prestamo {
-  display: none;
-} */
+  .input-prestamo {
+    display: none;
+  } */
 
 .select-op {
   margin-bottom: 10px;
@@ -195,7 +188,7 @@ footer nav ul li a {
   width: 100%;
 }
 
-button {
+/* button {
   flex-grow: 1;
   padding: 6.5px 15px;
   color: var(--claro);
@@ -204,12 +197,11 @@ button {
   border-radius: 3px;
   cursor: pointer;
   margin: 10px;
-  /* margin-bottom: 10px; */
-}
+} */
 
-.no-flex {
+/* .no-flex {
   flex-grow: 0;
-}
+} */
 
 /* PRESTAMOS */
 
@@ -268,7 +260,10 @@ button {
   }
 
   .accounts-table {
-    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Hacemos que las columnas ocupen el ancho completo */
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(100%, 1fr)
+    ); /* Hacemos que las columnas ocupen el ancho completo */
     grid-auto-rows: auto;
   }
 
@@ -283,7 +278,6 @@ button {
     padding: 8px;
   }
 }
-
 
 /* CELULARES */
 @media (max-width: 523px) {
