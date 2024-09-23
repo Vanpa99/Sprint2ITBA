@@ -55,33 +55,33 @@
   flex: 1;
 } */
 
-.cont-nav {
+/* .cont-nav {
   width: 200px;
   padding: 15px;
   border-right: 3px solid var(--difuminado);
-}
+} */
 
-.cont-nav ul {
+/* .cont-nav ul {
   list-style-type: none;
   padding: 0;
-}
-
+} */
+/* 
 .cont-nav ul li {
   margin-bottom: 10px;
-}
+} */
 
-.cont-nav ul li a {
+/* .cont-nav ul li a {
   text-decoration: none;
   color: var(--oscuro);
   font-weight: bold;
   display: block;
   padding: 10px;
   border-radius: 3px;
-}
-
+} */
+/* 
 .cont-nav ul li a:hover {
   background-color: var(--difuminado);
-}
+} */
 
 /* .area-principal {
   padding: 20px;
@@ -100,11 +100,10 @@
   font-size: 1.5rem;
 }
 
-footer {
+/* footer {
   color: var(--oscuro);
   text-align: center;
   padding: 10px 0px;
-  /* bottom: 0; */
   width: 100%;
   border-top: var(--difuminado) 3px solid;
 }
@@ -121,7 +120,7 @@ footer nav ul li {
 footer nav ul li a {
   color: var(--oscuro);
   text-decoration: none;
-}
+} */
 
 /* CUENTAS */
 /* Estilos de la tabla de cuentas */
@@ -213,17 +212,17 @@ footer nav ul li a {
   border-radius: 5px;
 }
 
-.info-form {
+/* .info-form {
   margin: 10px 0 0 15px;
-}
+} */
 
-.input-field {
+/* .input-field {
   width: calc(100% - 22px);
   padding: 10px;
   border: 1px solid var(--difuminado);
   border-radius: 5px;
   margin-bottom: 15px;
-}
+} */
 
 /* RESPONSIVE */
 /* Tablets */

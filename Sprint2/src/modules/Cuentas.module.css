@@ -1,0 +1,115 @@
+.accountsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.accountsTable th,
+.accountsTable td {
+  border: 1px solid var(--difuminado);
+  padding: 10px;
+  text-align: center;
+}
+
+.accountsTable th {
+  background-color: var(--oscuro);
+  color: var(--claro);
+}
+
+.accountsTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.accountsTable tr:hover {
+  background-color: #ddd;
+}
+
+/* Estilos para el resumen de cuentas */
+.accountSummary {
+  margin-top: 20px;
+}
+
+.accountSummary h3 {
+  margin-bottom: 10px;
+}
+
+.accountSummary ul {
+  list-style: none;
+  padding: 0;
+}
+
+.accountSummary ul li {
+  background: var(--difuminado);
+  padding: 10px;
+  border-bottom: 1px solid var(--oscuro);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalContent {
+  background-color: var(--claro);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid var(--oscuro);
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+}
+.headerModal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--oscuro);
+  color: var(--claro);
+  padding: 10px;
+  border-radius: 4px;
+}
+/* .close {
+  color: var(--claro);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--oscuro);
+  background-color: var(--claro);
+  padding-inline: 2px;
+  text-decoration: none;
+  cursor: pointer;
+} */
+
+.close {
+  color: var(--claro);
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  width: 1rem;
+  text-align: center;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--oscuro);
+  background-color: var(--claro);
+}
+
+.modalContent p {
+  padding: 10px;
+  background-color: var(--difuminado);
+  border-bottom: 1px solid var(--oscuro);
+  margin-bottom: 10px;
+}

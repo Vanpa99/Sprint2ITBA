@@ -3,8 +3,6 @@ import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
 
 function Prestamos() {
-  const formRef = useRef(null);
-
   useEffect(() => {
     const form = document.getElementById("form_prest");
     const resultado_form = document.getElementById("resultado");
@@ -48,7 +46,7 @@ function Prestamos() {
 
       <p className="info-form">Se considerará una tasa mensual del 2%.</p>
 
-      <form id="form_prest" ref={formRef} className="form-container">
+      <form id="form_prest" className="form-container">
         <InputField
           label="Ingrese el monto en pesos del préstamo que desea realizar:"
           htmlFor="monto"
@@ -70,7 +68,7 @@ function Prestamos() {
         />
         <div className="btn-container">
           <Boton type="submit" text="Calcular" />
-          <Boton type="button" text="Limpiar" formRef={formRef} />
+          <Boton type="button" text="Limpiar" action="clear" />
         </div>
         <InputField
           htmlFor="resultado"

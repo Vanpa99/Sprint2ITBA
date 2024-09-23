@@ -11,7 +11,7 @@ function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const formRef = useRef(null);
+  // const formRef = useRef(null);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -21,16 +21,16 @@ function Login({ onLogin }) {
     );
   };
 
-  const handleClear = () => {
-    setUsername("");
-    setPassword("");
-    setErrorMessage("");
-  };
-
+  // const handleClear = () => {
+  //   setUsername("");
+  //   setPassword("");
+  //   setErrorMessage("");
+  // };
+  //  SE VUELVE A AUTOCOMPLETAR
   return (
     <div className="form-container">
       <h2 className="section-title">Iniciar Sesión</h2>
-      <form ref={formRef} onSubmit={handleLogin} autoComplete="off">
+      <form onSubmit={handleLogin} autoComplete="off">
         <InputField
           label="Usuario:"
           type="text"
@@ -51,8 +51,7 @@ function Login({ onLogin }) {
         />
         <div className="btn-container">
           <Boton type="submit" text="Iniciar Sesión" />
-          <Boton type="button" text="Limpiar" onClick={handleClear} />
-          {/* FALTABA HANDLE CLEAR */}
+          <Boton type="button" text="Limpiar" action="clear" />
         </div>
       </form>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}

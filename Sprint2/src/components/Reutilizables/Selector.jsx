@@ -1,5 +1,10 @@
 import React from "react";
 
+export const opcionesAccion = [
+  { value: "transferencia", label: "Transferencia" },
+  { value: "pago", label: "Pago" },
+]; // MANDAR A "SELECTOR" (y hacer que funcione)
+
 function Selector({ name, label, options, onChange, value, className }) {
   return (
     <div className="select-op">

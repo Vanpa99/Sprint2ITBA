@@ -9,7 +9,7 @@ function Moneda() {
   const [fromCurrency, setFromCurrency] = useState("ARS");
   const [toCurrency, setToCurrency] = useState("USD");
   const [result, setResult] = useState(null);
-  const apiKey = "bd185bc85411a96d84116f03"; // Clave de API
+  const apiKey = "d73d8e24e51e8ce6bfd33d19"; // Clave de API
   const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
   const formRef = useRef(null);
 
@@ -38,7 +38,7 @@ function Moneda() {
   ]; // MANDAR A "SELECTOR" (y hacer que funcione)
 
   return (
-    <section>
+    <section className={styles.inicioContenido}>
       <section>
         <h3 className={styles.sectionTitle}>Convertidor de Monedas</h3>
         <p className={styles.infoForm}>
@@ -48,7 +48,7 @@ function Moneda() {
         <br />
       </section>
 
-      <form className={styles.formContainer} ref={formRef}>
+      <form className={styles.formContainer}>
         <Selector
           label="Monto a convertir:"
           name="fromCurrency"
@@ -65,7 +65,7 @@ function Moneda() {
         />
         <div className={styles.btnContainer}>
           <Boton type="button" text="Convertir" /> {/* DARLE FUNCIONALIDAD*/}
-          <Boton type="button" text="Limpiar" formRef={formRef} />
+          <Boton type="button" text="Limpiar" action="clear" />
         </div>
         <Selector
           label="Monto convertido:"

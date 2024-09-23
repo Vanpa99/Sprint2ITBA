@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import Boton from "./Reutilizables/Boton";
 import BotonCambioMoneda from "./Reutilizables/BotonCambioMoneda";
 import Selector from "./Reutilizables/Selector";
-
+import styles from "../modules/Cuentas.module.css";
+import "../Global.css";
+//  MALAS PRACTICAS, EL CODIGO DE LOGICA NO DEBE UTILIZAR className
 function Cuentas() {
   const [monedaSeleccionada, setMonedaSeleccionada] = useState("USD"); // USD por defecto
   useEffect(() => {
@@ -66,13 +68,13 @@ function Cuentas() {
 
   return (
     <div>
-      <h2 className="section-title">Mis Cuentas</h2>
-      <p className="p-cuentas">
+      <h2 className={styles.sectionTitle}>Mis Cuentas</h2>
+      <p className={styles.pCuentas}>
         Aquí puedes ver y gestionar todas tus cuentas bancarias.
       </p>
 
       {/* Tabla de cuentas */}
-      <table className="accounts-table">
+      <table className={styles.accountsTable}>
         <thead>
           <tr>
             <th>Tipo de Cuenta</th>
@@ -125,7 +127,7 @@ function Cuentas() {
       </table>
 
       {/* Movimientos recientes */}
-      <div className="account-summary">
+      <div className={styles.accountSummary}>
         <h3>Movimientos Recientes</h3>
         <ul>
           <li>Depósito: $2,000 (01/09/2024)</li>
@@ -135,10 +137,13 @@ function Cuentas() {
       </div>
 
       {/* Modal */}
-      <div id="accountModal" className="modal">
-        <div className="modal-content">
-          <span className="close">&times;</span>
-          <h3>Detalles de la Cuenta</h3>
+      <div id="accountModal" className={styles.modal}>
+        <div className={styles.modalContent}>
+          <div className={styles.headerModal}>
+            <h3>Detalles de la Cuenta</h3>
+            <span className={`close ${styles.close}`}>&times;</span>
+          </div>
+
           <p id="modalAccountNumber"></p>
           <p>Información adicional sobre la cuenta seleccionada.</p>
         </div>

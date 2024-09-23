@@ -2,18 +2,13 @@ import { useState } from "react";
 import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
 import Selector from "./Reutilizables/Selector";
+import { opcionesAccion } from "./Reutilizables/Selector";
 
 function Pagar() {
   const [accion, setAccion] = useState("transferencia");
   const [mensaje, setMensaje] = useState("");
 
-  // Opciones para el selector de acciones
-  const opcionesAccion = [
-    { value: "transferencia", label: "Transferencia" },
-    { value: "pago", label: "Pago" },
-  ]; // MANDAR A "SELECTOR" (y hacer que funcione)
-
-  // Handler para el envío del formulario
+  // // Handler para el envío del formulario
   const handleSubmit = (e) => {
     e.preventDefault();
     let mensajeAlerta = "";
@@ -26,15 +21,7 @@ function Pagar() {
     }
 
     setMensaje(mensajeAlerta);
-    clearInputs();
     window.alert(mensajeAlerta);
-  };
-
-  // Handler para limpiar los inputs
-  const clearInputs = () => {
-    document.getElementById("cbu").value = "";
-    document.getElementById("monto-transferencia").value = "";
-    document.getElementById("codigo-pago").value = "";
   };
 
   return (
@@ -44,15 +31,16 @@ function Pagar() {
         Para realizar una transferencia o pagar con codigo, complete los
         siguientes datos:
       </p>
-      <form onSubmit={handleSubmit} className="form-container">
+      <form onSubmit={handleSubmit} id="formId" className="form-container">
+        {/* onSubmit={handleSubmit} CON ESTO NO SE RECARGA LA PAGINA 
+        PERO NO SE LIMPIA CUANDO SE DA A ENVIAR y muestra mensaje, si se lo saco, se limpia
+        pero recarga la pagina (no deseado)*/}
         <Selector
           name="accion"
           label="Seleccione el tipo de operación:"
           options={opcionesAccion}
           onChange={(e) => setAccion(e.target.value)}
         />
-
-        {/* <form onSubmit={handleSubmit}> */}
         {accion === "transferencia" && (
           <article>
             <InputField
@@ -73,7 +61,6 @@ function Pagar() {
             />
           </article>
         )}
-
         {accion === "pago" && (
           <article>
             <InputField
@@ -88,14 +75,14 @@ function Pagar() {
           </article>
         )}
         <div className="btn-container">
-          <Boton type="submit" text="Enviar" id="enviarFormu" />
-          <Boton type="reset" text="Limpiar" onClick={clearInputs} />
+          <Boton type="submit" text="Enviar" id="enviarFormu" action="submit" />
+          <Boton type="button" text="Limpiar" action="clear" />
         </div>
       </form>
 
-      <section>
+      {/* <section>
         <p id="mensaje">{mensaje}</p>
-      </section>
+      </section> */}
     </>
   );
 }
