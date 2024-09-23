@@ -30,7 +30,11 @@ function Selector({ name, label, options, onChange, value, className }) {
 
 export default Selector; */
 
+//selector que funca sin el selector de pagar.jsx
+
 import React, { useState } from "react";
+
+function Selector({ name, label, onChange, value, className }) {
 
 const opcionesMoneda = [
   { value: "ARS", label: "ARS" },
@@ -40,7 +44,7 @@ const opcionesMoneda = [
   { value: "CLP", label: "CLP" },
 ];
 
-function Selector({ name, label, onChange, value, className }) {
+
   const [monedaSeleccionada, setMonedaSeleccionada] = useState(value);
 
   const manejarCambioMoneda = (e) => {
@@ -73,4 +77,24 @@ function Selector({ name, label, onChange, value, className }) {
   );
 }
 
-export default Selector;
+//opciones pagos
+
+function Pago({ name, label, options, onChange, value }) {
+  return (
+    <div className="select-op">
+      <label htmlFor={name}>{label}</label>
+      <select id={name} name={name} onChange={onChange} value={value}>
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+
+
+export {Selector, Pago};
+

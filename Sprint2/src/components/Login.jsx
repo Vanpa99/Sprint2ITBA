@@ -1,24 +1,50 @@
- import React, { useState, useRef } from "react";
+//este codigo anda de 10, no te cierra la sesión cuando recargas la página
+import React, { useState, useRef, useEffect } from "react";
 import Boton from "./Reutilizables/Boton.jsx";
 import InputField from "./Reutilizables/InputField.jsx";
-
-const users = [
-  { username: "ITPOWERBANK", password: "2024" },
-  { username: "USUARIO1", password: "1234" },
-];
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const formRef = useRef(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
+  // Verificar si ya hay una sesión activa en localStorage cuando el componente se monta
+  useEffect(() => {
+    const storedAuth = localStorage.getItem("isAuthenticated"); 
+    if (storedAuth === "true") {
+      setIsAuthenticated(true);
+    }
+  }, []);
+  
+  // Lista de usuarios
+  const users = [
+    { username: "ITPOWERBANK", password: "2024" },
+    { username: "USUARIO1", password: "1234" },
+  ];
+
+  // Verificar si ya hay una sesión activa en localStorage cuando el componente se monta
+  useEffect(() => {
+    const storedAuth = localStorage.getItem("isAuthenticated");
+    if (storedAuth === "true") {
+      setIsAuthenticated(true);
+      onLogin(); // Llama a la función de App para manejar la autenticación global
+    }
+  }, [onLogin]);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const loginSuccess = onLogin(username, password);
-    setErrorMessage(
-      loginSuccess ? "" : "Nombre de usuario o contraseña incorrectos"
+    const userExists = users.some(
+      (user) => user.username === username && user.password === password
     );
+    if (userExists) {
+      setIsAuthenticated(true);
+      localStorage.setItem("isAuthenticated", "true"); // Guardar la sesión en localStorage
+      onLogin(); // Llama a la función de App para manejar la autenticación global
+    } else {
+      setErrorMessage("Nombre de usuario o contraseña incorrectos");
+    }
   };
 
   const handleClear = () => {

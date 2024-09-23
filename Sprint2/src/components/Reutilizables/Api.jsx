@@ -144,7 +144,7 @@ function Api() {
 
 import React, { useEffect, useState } from "react";
 import InputField from "./InputField";
-import Selector from "./Selector";
+import { Selector } from "./Selector";
 import Boton from "./Boton";
 
 function Saldo({ saldo, fromCurrency, toCurrency }) {
@@ -244,7 +244,6 @@ function Moneda() {
           value={toCurrency}
           onChange={(e) => setToCurrency(e.target.value)}
         />
-        <Boton type="button" text="Convertir" />
         <InputField
           label="Monto convertido:"
           for="result"
