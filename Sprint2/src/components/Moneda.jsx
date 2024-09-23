@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Boton from "./Reutilizables/Boton";
+import { opcionesMoneda } from "./Reutilizables/OpcionesMoneda";
 import InputField from "./Reutilizables/InputField";
 import Selector from "./Reutilizables/Selector"; // Importamos el Selector reutilizable
 function Moneda() {
@@ -26,15 +27,6 @@ function Moneda() {
   }, [amount, fromCurrency, toCurrency, url]);
   // CREAR COMPONENTE DE API PARA LLAMARLA EN CUALQUIER LADO
 
-  // Opciones de monedas
-  const currencyOptions = [
-    { value: "ARS", label: "ARS" },
-    { value: "USD", label: "USD" },
-    { value: "EUR", label: "EUR" },
-    { value: "BRL", label: "BRL" },
-    { value: "CLP", label: "CLP" },
-  ]; // MANDAR A "SELECTOR" (y hacer que funcione)
-
   return (
     <section>
       <section className="beneficios">
@@ -49,7 +41,7 @@ function Moneda() {
         <Selector
           label="Monto a convertir:"
           name="fromCurrency"
-          options={currencyOptions}
+          options={opcionesMoneda} 
           value={fromCurrency}
           onChange={(e) => setFromCurrency(e.target.value)}
         />
@@ -70,7 +62,7 @@ function Moneda() {
         <Selector
           label="Monto convertido:"
           name="toCurrency"
-          options={currencyOptions}
+          options={opcionesMoneda}
           value={toCurrency}
           onChange={(e) => setToCurrency(e.target.value)}
         />

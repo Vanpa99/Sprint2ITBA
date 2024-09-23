@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Boton from "./Reutilizables/Boton";
 import BotonCambioMoneda from "./Reutilizables/BotonCambioMoneda";
 import Selector from "./Reutilizables/Selector";
+import { opcionesMoneda } from "./Reutilizables/OpcionesMoneda";
 
 function Cuentas() {
   const [monedaSeleccionada, setMonedaSeleccionada] = useState("USD"); // USD por defecto
@@ -52,13 +53,6 @@ function Cuentas() {
       });
     };
   }, []); // El array vacío asegura que useEffect se ejecute solo una vez, después de que el componente se monte
-
-  const opcionesMoneda = [
-    { value: "ARS", label: "ARS" },
-    { value: "USD", label: "USD" },
-    { value: "EUR", label: "EUR" },
-    { value: "MEX", label: "MEX" },
-  ]; //MANDAR A "SELECTOR" (y hacer que funcione )
 
   const manejarCambioMoneda = (e) => {
     setMonedaSeleccionada(e.target.value);

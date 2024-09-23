@@ -21,12 +21,6 @@ function Login({ onLogin }) {
     );
   };
 
-  const handleClear = () => {
-    setUsername("");
-    setPassword("");
-    setErrorMessage("");
-  };
-
   return (
     <div className="form-container">
       <h2 className="section-title">Iniciar Sesión</h2>
@@ -51,8 +45,11 @@ function Login({ onLogin }) {
         />
         <div className="btn-container">
           <Boton type="submit" text="Iniciar Sesión" />
-          <Boton type="button" text="Limpiar" onClick={handleClear} />
-          {/* FALTABA HANDLE CLEAR */}
+          <Boton type="button" text="Limpiar" formRef={formRef} onClear={() => {
+            setUsername("");
+            setPassword("");
+            setErrorMessage("");}}
+          />
         </div>
       </form>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}

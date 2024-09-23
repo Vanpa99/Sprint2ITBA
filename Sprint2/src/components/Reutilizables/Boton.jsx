@@ -9,17 +9,6 @@ function Boton({
   dataAccount,
   formRef,
 }) {
-  // const handleClick = (e) => {
-  //   if (onClick) {
-  //     onClick(e);
-  //   }
-  //   if (type === "button" && text === "Limpiar" && formRef?.current) {
-  //     const inputs = formRef.current.querySelectorAll("input");
-  //     inputs.forEach((input) => {
-  //       input.value = "";
-  //     });
-  //   }
-  // };
 
   const handleClick = (e) => {
     // Ejecutar la función onClick si está definida
