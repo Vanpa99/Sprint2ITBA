@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import Moneda from "./Moneda";
+import { Moneda, Saldo } from "./Reutilizables/Api";
+
+
 
 function Inicio() {
   return (
@@ -14,7 +16,7 @@ function Inicio() {
               necesidades. Nuestro compromiso es brindar un servicio de
               excelencia y productos financieros adaptados a cada etapa de su
               vida.
-            </p>
+            </p>       
           </section>
 
           <section class="beneficios">
