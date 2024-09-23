@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Boton from "./Reutilizables/Boton.jsx";
 import InputField from "./Reutilizables/InputField.jsx";
+import reut from "../modules/Reut.module.css";
 
 const users = [
   { username: "ITPOWERBANK", password: "2024" },
@@ -28,8 +29,8 @@ function Login({ onLogin }) {
   // };
   //  SE VUELVE A AUTOCOMPLETAR
   return (
-    <div className="form-container">
-      <h2 className="section-title">Iniciar Sesión</h2>
+    <div className={reut.formContainer}>
+      <h2 className={reut.sectionTitle}>Iniciar Sesión</h2>
       <form onSubmit={handleLogin} autoComplete="off">
         <InputField
           label="Usuario:"
@@ -49,7 +50,7 @@ function Login({ onLogin }) {
           required
           autoComplete="off" // FALTABA AUTOCOMPLETE
         />
-        <div className="btn-container">
+        <div className={reut.btnContainer}>
           <Boton type="submit" text="Iniciar Sesión" />
           <Boton type="button" text="Limpiar" action="clear" />
         </div>

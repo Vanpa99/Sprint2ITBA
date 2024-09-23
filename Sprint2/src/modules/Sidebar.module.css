@@ -25,3 +25,30 @@
 .contNav ul li a:hover {
   background-color: var(--difuminado);
 }
+
+@media (max-width: 768px) {
+  .contNav {
+    width: 100%;
+    border-right: none;
+    border-bottom: 3px solid var(--difuminado);
+    text-align: center;
+    padding: 0;
+  }
+
+  .contNav nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .contNav nav ul li {
+    margin-bottom: 0px;
+  }
+}
+@media (max-width: 523px) {
+  .contNav nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+}

@@ -16,12 +16,6 @@
   background-color: var(--claro);
 }
 
-.sectionTitle {
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-
 button {
   flex-grow: 1;
   padding: 6.5px 15px;

@@ -1,5 +1,5 @@
 import React from "react";
-
+import styles from "../../modules/Selector.module.css";
 export const opcionesAccion = [
   { value: "transferencia", label: "Transferencia" },
   { value: "pago", label: "Pago" },
@@ -7,7 +7,7 @@ export const opcionesAccion = [
 
 function Selector({ name, label, options, onChange, value, className }) {
   return (
-    <div className="select-op">
+    <div className={styles.selectOp}>
       <label htmlFor={name}>{label}</label>
       <select id={name} name={name} onChange={onChange} value={value}>
         {options.map((option) => (

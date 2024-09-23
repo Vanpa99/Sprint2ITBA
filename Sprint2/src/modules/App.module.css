@@ -7,3 +7,12 @@
   padding: 20px;
   flex: 1;
 }
+
+@media (max-width: 768px) {
+  .contenedor {
+    flex-direction: column;
+  }
+  .areaPrincipal {
+    padding: 0px;
+  }
+}

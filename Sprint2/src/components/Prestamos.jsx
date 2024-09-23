@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
+import reut from "../modules/Reut.module.css";
 
 function Prestamos() {
   useEffect(() => {
@@ -37,16 +38,16 @@ function Prestamos() {
   }, []); // El array vacío asegura que useEffect se ejecute solo una vez, después de que el componente se monte
 
   return (
-    <div>
-      <h2 className="section-title">Calculadora De Préstamos</h2>
-      <h3>
+    <div className={reut.contPrincipal}>
+      <h2 className={reut.sectionTitle}>Calculadora De Préstamos</h2>
+      <p className={reut.subtitle}>
         Para conocer el valor de los pagos mensuales que debe realizar, ingrese
         los siguientes datos:
-      </h3>
+      </p>
 
-      <p className="info-form">Se considerará una tasa mensual del 2%.</p>
+      <p className={reut.infoForm}>Se considerará una tasa mensual del 2%.</p>
 
-      <form id="form_prest" className="form-container">
+      <form id="form_prest" className={reut.formContainer}>
         <InputField
           label="Ingrese el monto en pesos del préstamo que desea realizar:"
           htmlFor="monto"
@@ -66,7 +67,7 @@ function Prestamos() {
           placeholder="Periodo"
           required
         />
-        <div className="btn-container">
+        <div className={reut.btnContainer}>
           <Boton type="submit" text="Calcular" />
           <Boton type="button" text="Limpiar" action="clear" />
         </div>

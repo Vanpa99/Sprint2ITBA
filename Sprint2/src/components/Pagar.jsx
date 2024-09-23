@@ -3,6 +3,7 @@ import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
 import Selector from "./Reutilizables/Selector";
 import { opcionesAccion } from "./Reutilizables/Selector";
+import reut from "../modules/Reut.module.css";
 
 function Pagar() {
   const [accion, setAccion] = useState("transferencia");
@@ -25,13 +26,13 @@ function Pagar() {
   };
 
   return (
-    <>
-      <h2 className="section-title">Métodos de Pago</h2>
-      <p class="info-form">
+    <div className={reut.contPrincipal}>
+      <h2 className={reut.sectionTitle}>Métodos de Pago</h2>
+      <p className={reut.infoForm}>
         Para realizar una transferencia o pagar con codigo, complete los
         siguientes datos:
       </p>
-      <form onSubmit={handleSubmit} id="formId" className="form-container">
+      <form onSubmit={handleSubmit} id="formId" className={reut.formContainer}>
         {/* onSubmit={handleSubmit} CON ESTO NO SE RECARGA LA PAGINA 
         PERO NO SE LIMPIA CUANDO SE DA A ENVIAR y muestra mensaje, si se lo saco, se limpia
         pero recarga la pagina (no deseado)*/}
@@ -74,7 +75,7 @@ function Pagar() {
             {/* CORREGIR BOTON ENVIAR EN PAGO */}
           </article>
         )}
-        <div className="btn-container">
+        <div className={reut.btnContainer}>
           <Boton type="submit" text="Enviar" id="enviarFormu" action="submit" />
           <Boton type="button" text="Limpiar" action="clear" />
         </div>
@@ -83,7 +84,7 @@ function Pagar() {
       {/* <section>
         <p id="mensaje">{mensaje}</p>
       </section> */}
-    </>
+    </div>
   );
 }
 

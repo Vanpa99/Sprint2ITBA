@@ -29,26 +29,26 @@
   height: 50px;
 } */
 
-.login form {
+/* .login form {
   display: flex;
   align-items: center;
-}
+} */
 
-.login input {
+/* .login input {
   margin-right: 10px;
   padding: 5px;
   border: 1px solid var(--difuminado);
-  border-radius: 3px;
-}
+  border-radius: 3px; */
+
 /* en login  */
-.login button {
+/* .login button {
   padding: 5px 10px;
   border: none;
   background-color: var(--oscuro);
   color: var(--claro);
   border-radius: 3px;
   cursor: pointer;
-}
+} */
 
 /* .contenedor {
   display: flex;
@@ -88,17 +88,17 @@
   flex: 1;
 } */
 
-.p-cuentas {
+/* .p-cuentas {
   text-align: center;
   margin-top: -1rem;
-}
+} */
 
 /* mandar a global */
-.sectionTitle {
+/* .sectionTitle {
   text-align: center;
   margin-bottom: 1rem;
   font-size: 1.5rem;
-}
+} */
 
 /* footer {
   color: var(--oscuro);
@@ -124,7 +124,7 @@ footer nav ul li a {
 
 /* CUENTAS */
 /* Estilos de la tabla de cuentas */
-.accounts-table {
+/* .accounts-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
@@ -135,9 +135,9 @@ footer nav ul li a {
   border: 1px solid var(--difuminado);
   padding: 10px;
   text-align: center;
-}
+} */
 
-.accounts-table th {
+/* .accounts-table th {
   background-color: var(--oscuro);
   color: var(--claro);
 }
@@ -148,10 +148,10 @@ footer nav ul li a {
 
 .accounts-table tr:hover {
   background-color: #ddd;
-}
+} */
 
 /* Estilos para el resumen de cuentas */
-.account-summary {
+/* .account-summary {
   margin-top: 20px;
 }
 
@@ -162,13 +162,13 @@ footer nav ul li a {
 .account-summary ul {
   list-style: none;
   padding: 0;
-}
+} */
 
-.account-summary ul li {
+/* .account-summary ul li {
   background: var(--difuminado);
   padding: 10px;
   border-bottom: 1px solid var(--oscuro);
-}
+} */
 
 /* TRANSFERENCIAS */
 
@@ -177,7 +177,7 @@ footer nav ul li a {
     display: none;
   } */
 
-.select-op {
+/* .select-op {
   margin-bottom: 10px;
 }
 
@@ -185,7 +185,7 @@ footer nav ul li a {
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
+} */
 
 /* button {
   flex-grow: 1;
@@ -204,13 +204,13 @@ footer nav ul li a {
 
 /* PRESTAMOS */
 
-.form-container {
+/* .form-container {
   border: 2px solid var(--difuminado);
   max-width: 80%;
   margin: auto;
   padding: 20px;
   border-radius: 5px;
-}
+} */
 
 /* .info-form {
   margin: 10px 0 0 15px;
@@ -226,17 +226,15 @@ footer nav ul li a {
 
 /* RESPONSIVE */
 /* Tablets */
-@media (max-width: 768px) {
-  .encabezado {
+/* .encabezado {
     flex-direction: column;
     align-items: center;
-  }
-
-  .contenedor {
+  } */
+/* .contenedor {
     flex-direction: column;
-  }
+    } */
 
-  .cont-nav {
+/* .cont-nav {
     width: 100%;
     border-right: none;
     border-bottom: 3px solid var(--difuminado);
@@ -252,17 +250,14 @@ footer nav ul li a {
 
   .cont-nav nav ul li {
     margin-bottom: 0px;
-  }
+  } */
 
-  .area-principal {
+/* .area-principal {
     padding: 10px;
-  }
-
+  } */
+@media (max-width: 768px) {
   .accounts-table {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(100%, 1fr)
-    ); /* Hacemos que las columnas ocupen el ancho completo */
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     grid-auto-rows: auto;
   }
 
@@ -280,17 +275,7 @@ footer nav ul li a {
 
 /* CELULARES */
 @media (max-width: 523px) {
-  .login input,
-  .login button {
-    width: 100%;
-    margin: 5px 0;
-  }
-
-  .login form {
-    flex-direction: column;
-  }
-
-  .cont-nav nav ul {
+  /* .cont-nav nav ul {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -300,7 +285,28 @@ footer nav ul li a {
     flex: 1 1 45%;
     margin: 5px;
     max-width: 100px;
+  } */
+  /* .login input,
+  .login button {
+    width: 100%;
+    margin: 5px 0;
   }
+
+  .login form {
+    flex-direction: column;
+  } */
+
+  /* .cont-nav nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cont-nav nav ul li {
+    flex: 1 1 45%;
+    margin: 5px;
+    max-width: 100px;
+  } */
 
   .accounts-table {
     grid-template-columns: 1fr; /* En pantallas muy pequeñas, mostramos una sola columna */

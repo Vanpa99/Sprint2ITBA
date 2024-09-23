@@ -3,7 +3,8 @@ import Boton from "./Reutilizables/Boton";
 import BotonCambioMoneda from "./Reutilizables/BotonCambioMoneda";
 import Selector from "./Reutilizables/Selector";
 import styles from "../modules/Cuentas.module.css";
-import "../Global.css";
+import reut from "../modules/Reut.module.css";
+
 //  MALAS PRACTICAS, EL CODIGO DE LOGICA NO DEBE UTILIZAR className
 function Cuentas() {
   const [monedaSeleccionada, setMonedaSeleccionada] = useState("USD"); // USD por defecto
@@ -67,10 +68,10 @@ function Cuentas() {
   }; //MANDAR A "SELECTOR" (y hacer que funcione )
 
   return (
-    <div>
-      <h2 className={styles.sectionTitle}>Mis Cuentas</h2>
-      <p className={styles.pCuentas}>
-        Aquí puedes ver y gestionar todas tus cuentas bancarias.
+    <div className={reut.contPrincipal}>
+      <h2 className={reut.sectionTitle}>Mis Cuentas</h2>
+      <p className={reut.subtitle}>
+        Aquí puedes ver y gestionar todas tus cuentas bancarias:
       </p>
 
       {/* Tabla de cuentas */}
