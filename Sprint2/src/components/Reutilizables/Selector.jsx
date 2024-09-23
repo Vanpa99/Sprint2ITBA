@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
-function Selector({ name, label, onChange, value, className }) {
-
-const opcionesMoneda = [
+export const opcionesMoneda = [
   { value: "ARS", label: "ARS" },
   { value: "USD", label: "USD" },
   { value: "EUR", label: "EUR" },
   { value: "BRL", label: "BRL" },
   { value: "CLP", label: "CLP" },
 ];
+
+function Selector({ name, label, onChange, value, className }) {
+
+
 
 
   const [monedaSeleccionada, setMonedaSeleccionada] = useState(value);

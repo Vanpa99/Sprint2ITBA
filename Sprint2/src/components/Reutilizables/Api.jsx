@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import InputField from "./InputField";
 import { Selector } from "./Selector";
 import Boton from "./Boton";
+import {opcionesMoneda} from "./Selector.jsx";
 
 function Saldo({ saldo, fromCurrency, toCurrency }) {
   const [saldoConvertido, setSaldoConvertido] = useState(null);
@@ -62,13 +63,13 @@ function Moneda() {
   }, [amount, fromCurrency, toCurrency, url]);
 
   // Opciones de monedas
-  const currencyOptions = [
+  /*const currencyOptions = [
     { value: "ARS", label: "ARS" },
     { value: "USD", label: "USD" },
     { value: "EUR", label: "EUR" },
     { value: "BRL", label: "BRL" },
     { value: "CLP", label: "CLP" },
-  ];
+  ];*/
 
   return (
     <section>
@@ -89,14 +90,14 @@ function Moneda() {
         <Selector
           name="fromCurrency"
           label="De:"
-          options={currencyOptions}
+          options={opcionesMoneda}
           value={fromCurrency}
           onChange={(e) => setFromCurrency(e.target.value)}
         />
         <Selector
           name="toCurrency"
           label="A:"
-          options={currencyOptions}
+          options={opcionesMoneda}
           value={toCurrency}
           onChange={(e) => setToCurrency(e.target.value)}
         />
