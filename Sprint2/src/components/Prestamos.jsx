@@ -40,15 +40,15 @@ function Prestamos() {
 
   return (
     <div>
-      <h2 className="bienvenida">Calculadora De Préstamos</h2>
+      <h2 className="section-title">Calculadora De Préstamos</h2>
       <h3>
         Para conocer el valor de los pagos mensuales que debe realizar, ingrese
         los siguientes datos:
       </h3>
 
-      <p>Se considerará una tasa mensual del 2%.</p>
+      <p className="info-form">Se considerará una tasa mensual del 2%.</p>
 
-      <form id="form_prest" ref={formRef}>
+      <form id="form_prest" ref={formRef} className="form-container">
         <InputField
           label="Ingrese el monto en pesos del préstamo que desea realizar:"
           htmlFor="monto"
@@ -68,8 +68,10 @@ function Prestamos() {
           placeholder="Periodo"
           required
         />
-        <Boton type="submit" text="Calcular" />
-        <Boton type="button" text="Limpiar" formRef={formRef} />
+        <div className="btn-container">
+          <Boton type="submit" text="Calcular" />
+          <Boton type="button" text="Limpiar" formRef={formRef} onClear={() => {}}/>
+        </div>
         <InputField
           htmlFor="resultado"
           label="Valor calculado de los pagos mensuales a realizar:"

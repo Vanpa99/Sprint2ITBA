@@ -40,15 +40,19 @@ function Pagar() {
   return (
     <>
       <h2 className="section-title">Métodos de Pago</h2>
+      <p class="info-form">
+        Para realizar una transferencia o pagar con codigo, complete los
+        siguientes datos:
+      </p>
+      <form onSubmit={handleSubmit} className="form-container">
+        <Selector
+          name="accion"
+          label="Seleccione el tipo de operación:"
+          options={opcionesAccion}
+          onChange={(e) => setAccion(e.target.value)}
+        />
 
-      <Selector
-        name="accion"
-        label="Seleccione el tipo de operación:"
-        options={opcionesAccion}
-        onChange={(e) => setAccion(e.target.value)}
-      />
-
-      <form onSubmit={handleSubmit}>
+        {/* <form onSubmit={handleSubmit}> */}
         {accion === "transferencia" && (
           <article>
             <InputField
@@ -60,7 +64,7 @@ function Pagar() {
               required
             />
             <InputField
-              label="Ingrese el monto: $"
+              label="Ingrese el monto:"
               type="number"
               name="monto-transferencia"
               id="monto-transferencia"
@@ -83,8 +87,10 @@ function Pagar() {
             {/* CORREGIR BOTON ENVIAR EN PAGO */}
           </article>
         )}
-        <Boton type="submit" text="Enviar" id="enviarFormu" />
-        <Boton type="reset" text="Limpiar" onClick={clearInputs} />
+        <div className="btn-container">
+          <Boton type="submit" text="Enviar" id="enviarFormu" />
+          <Boton type="reset" text="Limpiar" onClick={clearInputs} onClear={() => {}}/>
+        </div>
       </form>
 
       <section>

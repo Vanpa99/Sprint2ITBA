@@ -134,6 +134,8 @@ footer nav ul li a {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+
+  
 }
 
 .accounts-table th,
@@ -154,14 +156,6 @@ footer nav ul li a {
 
 .accounts-table tr:hover {
   background-color: #ddd;
-}
-
-.accounts-table button {
-  padding: 5px 10px;
-  background-color: var(--oscuro);
-  color: var(--claro);
-  border: none;
-  cursor: pointer;
 }
 
 /* Estilos para el resumen de cuentas */
@@ -186,24 +180,35 @@ footer nav ul li a {
 
 /* TRANSFERENCIAS */
 
-.input-pago,
+/* .input-pago,
 .input-prestamo {
   display: none;
-}
+} */
 
 .select-op {
   margin-bottom: 10px;
 }
 
-form input[type="submit"],
-form input[type="reset"] {
-  width: 49%;
-  border: none;
-  background-color: var(--oscuro);
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+button {
+  flex-grow: 1;
+  padding: 6.5px 15px;
   color: var(--claro);
-  border-radius: 0.2rem;
-  padding: 0.4rem 0;
+  background-color: var(--oscuro);
+  border: none;
+  border-radius: 3px;
   cursor: pointer;
+  margin: 10px;
+  /* margin-bottom: 10px; */
+}
+
+.no-flex {
+  flex-grow: 0;
 }
 
 /* PRESTAMOS */
@@ -213,12 +218,7 @@ form input[type="reset"] {
   max-width: 80%;
   margin: auto;
   padding: 20px;
-  border-radius: 3px;
-}
-
-.label-prestamo {
-  display: block;
-  margin-bottom: 5px;
+  border-radius: 5px;
 }
 
 .info-form {
@@ -228,90 +228,12 @@ form input[type="reset"] {
 .input-field {
   width: calc(100% - 22px);
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid var(--difuminado);
+  border-radius: 5px;
   margin-bottom: 15px;
 }
 
-button {
-  padding: 10px 15px;
-  color: var(--claro);
-  background-color: var(--oscuro);
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-/* /* CONVERSOR*/
-
-/* #monto{
-  width: 50%;
-  margin: 10px;
-  text-align: center;
-}
-
-#resultado{
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-.form-container{
-  border: 2px solid var(--difuminado);
-  max-width: 80%;
-  margin: auto;
-  padding: 20px;
-  border-radius: 3px;
-}
-
-input[type="number"] {
-  width: calc(100% - 22px);
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 15px;
-} */
-
-/* CARD*/
-/* .ingreso-pesos{
-  display: inline-block;
-}
-
-.label-ingreso{
-  text-align: center;
-}
-
-#pesos{
-  text-align: center;
-}
-
-.card{
-  border: 3px solid var(--difuminado);
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px color var(--difuminado);
-  padding: 30 px;
-  margin: 10px;
-  text-align: center;
-  display: inline-block;
-}
-.card-title{
-  color:var(--oscuro);
-  font-weight: bold;
-  font-size: 40px;
-}
-
-.pesos{
-  color:var(--oscuro);
-  font-weight: bold;
-  font-size: 40px;
-}
-
-.dolar{
-  color:var(--oscuro);
-  font-weight: bold;
-  font-size: 40px;
-}  */
-/* MEDIAS QUERYS */
-
+/* RESPONSIVE */
 /* Tablets */
 @media (max-width: 768px) {
   .encabezado {
@@ -344,7 +266,24 @@ input[type="number"] {
   .area-principal {
     padding: 10px;
   }
+
+  .accounts-table {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Hacemos que las columnas ocupen el ancho completo */
+    grid-auto-rows: auto;
+  }
+
+  .accounts-table th,
+  .accounts-table td {
+    padding: 8px;
+    font-size: 14px; /* Reducimos el tamaño del texto para pantallas más pequeñas */
+  }
+
+  .account-summary ul li {
+    font-size: 14px; /* Ajustamos el tamaño de las fuentes */
+    padding: 8px;
+  }
 }
+
 
 /* CELULARES */
 @media (max-width: 523px) {
@@ -368,5 +307,48 @@ input[type="number"] {
     flex: 1 1 45%;
     margin: 5px;
     max-width: 100px;
+  }
+
+  .accounts-table {
+    grid-template-columns: 1fr; /* En pantallas muy pequeñas, mostramos una sola columna */
+  }
+
+  .accounts-table th,
+  .accounts-table td {
+    font-size: 12px; /* Reducimos aún más el tamaño del texto */
+    padding: 6px;
+  }
+
+  .account-summary h3 {
+    font-size: 18px; /* Ajustamos el tamaño del título en el resumen de cuentas */
+  }
+
+  .account-summary ul li {
+    font-size: 12px;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 350px) {
+  .accounts-table {
+    display: block; /* Cambiamos a block para evitar el desbordamiento del grid */
+    overflow-x: auto; /* Habilitamos desplazamiento horizontal si es necesario */
+  }
+
+  .accounts-table table {
+    width: 100%; /* Aseguramos que la tabla ocupe el ancho completo */
+    table-layout: fixed; /* Evitamos que las columnas crezcan fuera de control */
+  }
+
+  .accounts-table th,
+  .accounts-table td {
+    word-wrap: break-word; /* Ajustamos el texto dentro de las celdas */
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  /* Si hay una tabla con muchas columnas, la hacemos desplazable horizontalmente */
+  .accounts-table {
+    overflow-x: auto;
   }
 }

@@ -16,7 +16,8 @@ function Inicio() {
               necesidades. Nuestro compromiso es brindar un servicio de
               excelencia y productos financieros adaptados a cada etapa de su
               vida.
-            </p>       
+            </p>
+            <br />
           </section>
 
           <section class="beneficios">
@@ -25,6 +26,7 @@ function Inicio() {
               Al ser parte de ITPowerBank, accederá a tasas competitivas, una
               amplia red de cajeros automáticos y atención personalizada.
             </p>
+            <br />
           </section>
         </div>
 

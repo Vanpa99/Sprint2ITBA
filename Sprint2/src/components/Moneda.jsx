@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
 import Selector from "./Reutilizables/Selector"; // Importamos el Selector reutilizable
@@ -9,6 +9,7 @@ function Moneda() {
   const [result, setResult] = useState(null);
   const apiKey = "d73d8e24e51e8ce6bfd33d19"; // Clave de API
   const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
+  const formRef = useRef(null);
 
   useEffect(() => {
     //Exchangerate
@@ -19,14 +20,7 @@ function Moneda() {
         .then((data) => {
           const rate = data.conversion_rates[toCurrency];
           const conversionResult = amount * rate;
-          setResult(
-            `${amount} ${fromCurrency} = ${conversionResult.toFixed(
-              2
-            )} ${toCurrency}`
-          );
-        })
-        .catch((error) => {
-          console.error("Error fetching the exchange rate:", error);
+          setResult(`${conversionResult.toFixed(2)} ${toCurrency}`);
         });
     }
   }, [amount, fromCurrency, toCurrency, url]);
@@ -45,38 +39,42 @@ function Moneda() {
     <section>
       <section className="beneficios">
         <h3>Convertidor de Monedas</h3>
-        <p>
-          A continuacion le dejamos un convertidor de monedas, para convertir la
-          moneda que usted desee:
+        <p className="info-form">
+          A continuacion le ofrecemos nuestro servicio de convertidor de monedas:
         </p>
+        <br />
       </section>
 
-      <form className="form-conv form-container">
-        <InputField
+      <form className="form-container" ref={formRef}>
+        <Selector
           label="Monto a convertir:"
+          name="fromCurrency"
+          options={currencyOptions}
+          value={fromCurrency}
+          onChange={(e) => setFromCurrency(e.target.value)}
+        />
+        <InputField
           type="number"
           id="monto"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
           placeholder="Ingrese monto"
         />
+        <div className="btn-container">
+          <Boton type="button" text="Convertir" /> {/* DARLE FUNCIONALIDAD*/}
+          <Boton type="button" text="Limpiar" formRef={formRef} onClear={() => {
+            setResult("");
+            setAmount("");}}
+          />
+        </div>
         <Selector
-          name="fromCurrency"
-          label="De:"
-          options={currencyOptions}
-          value={fromCurrency}
-          onChange={(e) => setFromCurrency(e.target.value)}
-        />
-        <Selector
+          label="Monto convertido:"
           name="toCurrency"
-          label="A:"
           options={currencyOptions}
           value={toCurrency}
           onChange={(e) => setToCurrency(e.target.value)}
         />
-        <Boton type="button" text="Convertir" /> {/* DARLE FUNCIONALIDAD*/}
         <InputField
-          label="Monto convertido:"
           for="result"
           type="text"
           id="result"
