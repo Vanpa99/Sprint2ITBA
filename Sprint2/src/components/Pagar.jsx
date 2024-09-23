@@ -10,8 +10,8 @@ function Pagar() {
 
   // Opciones para el selector de acciones
   const opcionesAccion = [
-    { value: "transferencia", label: "CBU" },
-    { value: "pago", label: "Pagar" },
+    { value: "transferencia", label: "Transferencia" },
+    { value: "pago", label: "Pago" },
   ];
 
   // Handler para el envío del formulario
