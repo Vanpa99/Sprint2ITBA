@@ -8,6 +8,7 @@ function Boton({
   className = "",
   dataAccount,
   formRef,
+  onClear, // Asegúrate de agregar esta prop para manejar la limpieza
 }) {
 
   const handleClick = (e) => {
@@ -56,6 +57,7 @@ Boton.propTypes = {
   className: PropTypes.string,
   dataAccount: PropTypes.string,
   formRef: PropTypes.object,
+  onClear: PropTypes.func, // Asegúrate de agregar esta prop
 };
 
 export default Boton;

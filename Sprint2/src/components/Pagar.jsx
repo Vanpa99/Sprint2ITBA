@@ -1,19 +1,18 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
 import Selector from "./Reutilizables/Selector";
 
 function Pagar() {
+  const formRef = useRef(null); // Referencia al formulario
   const [accion, setAccion] = useState("transferencia");
   const [mensaje, setMensaje] = useState("");
 
-  // Opciones para el selector de acciones
   const opcionesAccion = [
     { value: "transferencia", label: "Transferencia" },
     { value: "pago", label: "Pago" },
-  ]; // MANDAR A "SELECTOR" (y hacer que funcione)
+  ];
 
-  // Handler para el envío del formulario
   const handleSubmit = (e) => {
     e.preventDefault();
     let mensajeAlerta = "";
@@ -26,25 +25,17 @@ function Pagar() {
     }
 
     setMensaje(mensajeAlerta);
-    clearInputs();
     window.alert(mensajeAlerta);
-  };
-
-  // Handler para limpiar los inputs
-  const clearInputs = () => {
-    document.getElementById("cbu").value = "";
-    document.getElementById("monto-transferencia").value = "";
-    document.getElementById("codigo-pago").value = "";
   };
 
   return (
     <>
       <h2 className="section-title">Métodos de Pago</h2>
-      <p class="info-form">
+      <p className="info-form">
         Para realizar una transferencia o pagar con codigo, complete los
         siguientes datos:
       </p>
-      <form onSubmit={handleSubmit} className="form-container">
+      <form ref={formRef} onSubmit={handleSubmit} className="form-container">
         <Selector
           name="accion"
           label="Seleccione el tipo de operación:"
@@ -52,7 +43,6 @@ function Pagar() {
           onChange={(e) => setAccion(e.target.value)}
         />
 
-        {/* <form onSubmit={handleSubmit}> */}
         {accion === "transferencia" && (
           <article>
             <InputField
@@ -84,12 +74,11 @@ function Pagar() {
               placeholder="Ingresa el código de pago"
               required
             />
-            {/* CORREGIR BOTON ENVIAR EN PAGO */}
           </article>
         )}
         <div className="btn-container">
           <Boton type="submit" text="Enviar" id="enviarFormu" />
-          <Boton type="reset" text="Limpiar" onClick={clearInputs} onClear={() => {}}/>
+          <Boton type="button" text="Limpiar" formRef={formRef} onClear={() => {}} />
         </div>
       </form>
 
