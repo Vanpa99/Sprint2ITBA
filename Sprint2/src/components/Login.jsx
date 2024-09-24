@@ -1,13 +1,13 @@
-//este codigo anda de 10, no te cierra la sesión cuando recargas la página
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Boton from "./Reutilizables/Boton.jsx";
 import InputField from "./Reutilizables/InputField.jsx";
+import reut from "../modules/Reut.module.css";
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const formRef = useRef(null);
+  
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   
   // Verificar si ya hay una sesión activa en localStorage cuando el componente se monta
@@ -47,17 +47,10 @@ function Login({ onLogin }) {
     }
   };
 
-  const handleClear = () => {
-    setUsername("");
-    setPassword("");
-    setErrorMessage("");
-  };
-
   return (
-    <div className="form-container">
-      <h2 className="section-title">Iniciar Sesión</h2>
-      <form ref={formRef} onSubmit={handleLogin} autoComplete="off">
-        {" "}
+    <div className={reut.formContainer}>
+      <h2 className={reut.sectionTitle}>Iniciar Sesión</h2>
+      <form onSubmit={handleLogin} autoComplete="off">
         <InputField
           label="Usuario:"
           type="text"
@@ -65,7 +58,7 @@ function Login({ onLogin }) {
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Ingresa tu nombre de usuario"
           required
-          autoComplete="off" // FALTABA AUTOCOMPLETE✅
+          autoComplete="off" 
         />
         <InputField
           label="Contraseña:"
@@ -74,11 +67,11 @@ function Login({ onLogin }) {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Ingresa tu contraseña"
           required
-          autoComplete="off" // FALTABA AUTOCOMPLETE✅
+          autoComplete="off" 
         />
-        <div className="btn-container">
-          <Boton type="submit" text="Iniciar Sesión" />
-          <Boton type="button" text="Limpiar" onClick={handleClear} />
+        <div className={reut.btnContainer}>
+        <Boton type="submit" text="Iniciar Sesión" />
+        <Boton type="button" text="Limpiar" action="clear" />
         </div>
       </form>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}

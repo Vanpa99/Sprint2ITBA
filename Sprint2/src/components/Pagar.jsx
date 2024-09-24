@@ -1,18 +1,15 @@
 import { useState } from "react";
 import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
-import { Pago } from "./Reutilizables/Selector";
+import Selector  from "./Reutilizables/Selector";
+import { opcionesAccion } from "./Reutilizables/Selector";
+import reut from "../modules/Reut.module.css";
 
 function Pagar() {
   const [accion, setAccion] = useState("transferencia");
   const [mensaje, setMensaje] = useState("");
-  const [moneda, setMoneda] = useState("ARS"); // Valor inicial de la moneda
 
-  // Opciones para el selector de acciones
-  const opcionesAccion = [
-    { value: "transferencia", label: "Transferencia" },
-    { value: "pago", label: "Pago" },
-  ];
+  
 
   // Handler para el envío del formulario
   const handleSubmit = (e) => {
@@ -27,33 +24,24 @@ function Pagar() {
     }
 
     setMensaje(mensajeAlerta);
-    clearInputs();
     window.alert(mensajeAlerta);
   };
 
-  // Handler para limpiar los inputs
-  const clearInputs = () => {
-    document.getElementById("cbu").value = "";
-    document.getElementById("monto-transferencia").value = "";
-    document.getElementById("codigo-pago").value = "";
-  };
 
   return (
-    <>
-      <h2 className="section-title">Métodos de Pago</h2>
-      <p className="info-form">
-        Para realizar una transferencia o pagar con código, complete los
+    <div className={reut.contPrincipal}>
+      <h2 className={reut.sectionTitle}>Métodos de Pago</h2>
+      <p className={reut.infoForm}>
+        Para realizar una transferencia o pagar con codigo, complete los
         siguientes datos:
       </p>
-      <form onSubmit={handleSubmit} className="form-container">
-        <Pago
+      <form onSubmit={handleSubmit} id="formId" className={reut.formContainer}>  {/*P U L I R*/}                                 
+        <Selector
           name="accion"
           label="Seleccione el tipo de operación:"
           options={opcionesAccion}
           onChange={(e) => setAccion(e.target.value)}
-          value={accion}
         />
-
         {accion === "transferencia" && (
           <article>
             <InputField
@@ -74,7 +62,6 @@ function Pagar() {
             />
           </article>
         )}
-
         {accion === "pago" && (
           <article>
             <InputField
@@ -87,16 +74,12 @@ function Pagar() {
             />
           </article>
         )}
-        <div className="btn-container">
-          <Boton type="submit" text="Enviar" id="enviarFormu" />
-          <Boton type="reset" text="Limpiar" onClick={clearInputs} />
+        <div className={reut.btnContainer}>
+          <Boton type="submit" text="Enviar" id="enviarFormu" action="submit" /> {/* P U L I R */}
+          <Boton type="button" text="Limpiar" action="clear" /> 
         </div>
       </form>
-
-      <section>
-        <p id="mensaje">{mensaje}</p>
-      </section>
-    </>
+    </div>
   );
 }
 

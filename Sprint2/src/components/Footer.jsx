@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import styles from "../modules/Footer.module.css";
 
 function Footer() {
     return (
-        <footer>
+        <footer className={styles.footer}>
             <p>© 2024 ITPowerBank. Todos los derechos reservados.</p>
             <nav>
                 <ul>

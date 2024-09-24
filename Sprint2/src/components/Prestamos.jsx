@@ -1,16 +1,16 @@
 import React, { useEffect, useRef } from "react";
 import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
+import reut from "../modules/Reut.module.css";
 
 function Prestamos() {
-  const formRef = useRef(null);
 
   useEffect(() => {
     const form = document.getElementById("form_prest");
     const resultado_form = document.getElementById("resultado");
     const acumulado_form = document.getElementById("acumulado");
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = (e) => { /* P A S A R   A  B O T O N*/
       e.preventDefault();
 
       const monto = document.getElementById("monto").value;
@@ -21,10 +21,10 @@ function Prestamos() {
       const denominador = 1 - (1 + tasa) ** -periodo;
 
       const resul = numerador / denominador;
-      const resultado = resul.toFixed(2);
+      const resultado = resul.toFixed(2); /* P U L I R ESTA PORQUERIA NO ACEPTA toLocaleString("es-ES")*/
 
       const acum = resultado * periodo;
-      const acumulado = acum.toFixed(2);
+      const acumulado = acum.toFixed(2); /* P U L I R ESTA PORQUERIA NO ACEPTA toLocaleString("es-ES")*/
 
       resultado_form.value = resultado;
       acumulado_form.value = acumulado;
@@ -39,17 +39,17 @@ function Prestamos() {
   }, []); // El array vacío asegura que useEffect se ejecute solo una vez, después de que el componente se monte
 
   return (
-    <div>
-      <h2 className="section-title">Calculadora De Préstamos</h2>
-      <h3>
+    <div className={reut.contPrincipal}>
+      <h2 className={reut.sectionTitle}>Calculadora De Préstamos</h2>
+      <p className={reut.subtitle}>
         Para conocer el valor de los pagos mensuales que debe realizar, ingrese
         los siguientes datos:
-      </h3>
+      </p>
 
-      <p className="info-form">Se considerará una tasa mensual del 2%.</p>
+      <p className={reut.infoForm}>Se considerará una tasa mensual del 2%.</p>
 
-      <form id="form_prest" ref={formRef} className="form-container">
-        <InputField
+      <form id="form_prest" className={reut.formContainer}>
+      <InputField
           label="Ingrese el monto en pesos del préstamo que desea realizar:"
           htmlFor="monto"
           type="number"
@@ -68,9 +68,9 @@ function Prestamos() {
           placeholder="Periodo"
           required
         />
-        <div className="btn-container">
+        <div className={reut.btnContainer}>
           <Boton type="submit" text="Calcular" />
-          <Boton type="button" text="Limpiar" formRef={formRef} onClear={() => {}}/>
+          <Boton type="button" text="Limpiar" action="clear" />
         </div>
         <InputField
           htmlFor="resultado"

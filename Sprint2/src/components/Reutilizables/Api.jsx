@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import InputField from "./InputField";
-import { Selector } from "./Selector";
+import Selector from "./Selector";
 import Boton from "./Boton";
-import {opcionesMoneda} from "./Selector.jsx";
+import { opcionesMoneda } from "./Selector.jsx";
+import reut from "../../modules/Reut.module.css";
 
 function Saldo({ saldo, fromCurrency, toCurrency }) {
   const [saldoConvertido, setSaldoConvertido] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const apiKey = "d73d8e24e51e8ce6bfd33d19";  // Aquí va tu API key
+  const apiKey = "d73d8e24e51e8ce6bfd33d19"; // Aquí va tu API key
 
   // URL para obtener las tasas de cambio
   const convertUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
@@ -32,15 +33,13 @@ function Saldo({ saldo, fromCurrency, toCurrency }) {
   }, [saldo, fromCurrency, toCurrency, convertUrl]);
 
   return (
-    <div>
-      {isLoading ? "Cargando..." : `${saldoConvertido} ${toCurrency}`}
-    </div>
+    <div>{isLoading ? "Cargando..." : `${saldoConvertido} ${toCurrency}`}</div>
   );
 }
 
 // Componente Moneda para el convertidor de monto
 function Moneda() {
-  const [amount, setAmount] = useState(1);
+  const [amount, setAmount] = useState();
   const [fromCurrency, setFromCurrency] = useState("ARS");
   const [toCurrency, setToCurrency] = useState("USD");
   const [result, setResult] = useState(null);
@@ -54,7 +53,9 @@ function Moneda() {
         .then((data) => {
           const rate = data.conversion_rates[toCurrency];
           const conversionResult = amount * rate;
-          setResult(`${amount} ${fromCurrency} = ${conversionResult.toFixed(2)} ${toCurrency}`);
+          setResult(
+            `${toCurrency} ${conversionResult.toLocaleString("es-ES")} `
+          );
         })
         .catch((error) => {
           console.error("Error fetching the exchange rate:", error);
@@ -62,47 +63,39 @@ function Moneda() {
     }
   }, [amount, fromCurrency, toCurrency, url]);
 
-  // Opciones de monedas
-  /*const currencyOptions = [
-    { value: "ARS", label: "ARS" },
-    { value: "USD", label: "USD" },
-    { value: "EUR", label: "EUR" },
-    { value: "BRL", label: "BRL" },
-    { value: "CLP", label: "CLP" },
-  ];*/
-
   return (
-    <section>
-      <section className="beneficios">
-        <h3>Convertidor de Monedas</h3>
-        <p>A continuación le dejamos un convertidor de monedas, para convertir la moneda que usted desee:</p>
-      </section>
+    <section className={reut.contPrincipal}>
+      <h3 className={reut.sectionTitle}>Convertidor de Monedas</h3>
+      <p className={reut.infoForm}>
+        A continuacion le ofrecemos nuestro servicio de convertidor de monedas:
+      </p>
 
-      <form className="form-conv form-container">
+      <form className={reut.formContainer}>
+        <Selector
+          name="fromCurrency"
+          label="Moneda a convertir:"
+          options={opcionesMoneda}
+          value={fromCurrency}
+          onChange={(e) => setFromCurrency(e.target.value)}
+        />
         <InputField
-          label="Monto a convertir:"
           type="number"
           id="monto"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
           placeholder="Ingrese monto"
         />
-        <Selector
-          name="fromCurrency"
-          label="De:"
-          options={opcionesMoneda}
-          value={fromCurrency}
-          onChange={(e) => setFromCurrency(e.target.value)}
-        />
+
+        <Boton type="button" text="Limpiar" action="clear" /> {/* C E N T R A R */}
+
         <Selector
           name="toCurrency"
-          label="A:"
+          label="Moneda convertida:"
           options={opcionesMoneda}
           value={toCurrency}
           onChange={(e) => setToCurrency(e.target.value)}
         />
         <InputField
-          label="Monto convertido:"
           for="result"
           type="text"
           id="result"
@@ -115,4 +108,4 @@ function Moneda() {
   );
 }
 
-export {Saldo, Moneda };
+export { Saldo, Moneda };

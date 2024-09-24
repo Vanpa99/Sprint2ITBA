@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { Saldo } from "./Reutilizables/Api";
-import { Selector } from "./Reutilizables/Selector";
+import  Selector  from "./Reutilizables/Selector";
 import Boton from "./Reutilizables/Boton";
+import styles from "../modules/Cuentas.module.css";
+import reut from "../modules/Reut.module.css";
+import { opcionesMoneda } from "./Reutilizables/Selector";
 
 
 
@@ -57,23 +60,23 @@ function Cuentas() {
     }, [])
 
   return (
-    <div>
-      <h2 className="bienvenida">Mis Cuentas</h2>
-      <p className="p-cuentas">
-        Aquí puedes ver y gestionar todas tus cuentas bancarias.
+    <div className={reut.contPrincipal}>
+      <h2 className={reut.sectionTitle}>Mis Cuentas</h2>
+      <p className={reut.subtitle}>
+        Aquí puedes ver y gestionar todas tus cuentas bancarias:
       </p>
 
-      <table className="accounts-table">
+      <table className={styles.accountsTable}>
         <thead>
           <tr>
             <th>Tipo de Cuenta</th>
             <th>Número de Cuenta</th>
             <th>
-              Saldo
+              
               <Selector
                 name="moneda"
-                label=""
-                options={monedaSeleccionada}
+                label="Saldo"
+                options={opcionesMoneda}
                 onChange={(e) => setMonedaSeleccionada(e.target.value)}
               />
             </th>
@@ -98,7 +101,7 @@ function Cuentas() {
               <Saldo saldo={15300} fromCurrency="ARS" toCurrency={monedaSeleccionada} />
             </td>
             <td>
-            <Boton /*C A S I   M E   O L V I D O  Y USO <button> */
+            <Boton 
                 text="Ver Detalles"
                 className="details-btn"
                 dataAccount="987-654321-00"
@@ -110,7 +113,7 @@ function Cuentas() {
 
        {/*Movimientos recientes*/}
 
-      <div className="account-summary">
+       <div className={styles.accountSummary}>
         <h3>Movimientos Recientes</h3>
         <ul>
           <li>Depósito: $2,000 (01/09/2024)</li>
@@ -120,10 +123,13 @@ function Cuentas() {
       </div> 
 
        {/*Modal*/} 
-       <div id="accountModal" className="modal">
-        <div className="modal-content">
-          <span className="close">&times;</span>
-          <h3>Detalles de la Cuenta</h3>
+       <div id="accountModal" className={styles.modal}>
+        <div className={styles.modalContent}>
+          <div className={styles.headerModal}>
+            <h3>Detalles de la Cuenta</h3>
+            <span className={`close ${styles.close}`}>&times;</span>
+          </div>
+
           <p id="modalAccountNumber"></p>
           <p>Información adicional sobre la cuenta seleccionada.</p>
         </div>

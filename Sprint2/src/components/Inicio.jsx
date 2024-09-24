@@ -1,37 +1,23 @@
-import { Moneda, Saldo } from "./Reutilizables/Api";
-
+import { Moneda }  from "./Reutilizables/Api";
+import reut from "../modules/Reut.module.css";
 
 
 function Inicio() {
   return (
-    <>
-      <section>
-        <div class="inicio-contenido">
-          <section class="inicio-descripcion">
-            <h2 className="section-title">Bienvenido a ITPowerBank</h2>
-            <p className="p-cuentas">
-              ITPowerBank es su aliado financiero de confianza. Ofrecemos
-              soluciones bancarias modernas, seguras y eficientes para todas sus
-              necesidades. Nuestro compromiso es brindar un servicio de
-              excelencia y productos financieros adaptados a cada etapa de su
-              vida.
-            </p>
-            <br />
-          </section>
+    <section>
+      <div className={reut.contPrincipal}>
+        <section className={reut.inicioDescripcion}>
+          <h2 className={reut.sectionTitle}>Bienvenido a ITPowerBank</h2>
+          <p className={reut.sectionText}>
+            ITPowerBank es su aliado financiero de confianza. Ofrecemos
+            soluciones bancarias modernas, seguras y eficientes para todas sus
+            necesidades.
+          </p>
+        </section>
+      </div>
 
-          <section class="beneficios">
-            <h3>Beneficios de ser Cliente</h3>
-            <p>
-              Al ser parte de ITPowerBank, accederá a tasas competitivas, una
-              amplia red de cajeros automáticos y atención personalizada.
-            </p>
-            <br />
-          </section>
-        </div>
-
-        <Moneda />
-      </section>
-    </>
+      <Moneda />
+    </section>
   );
 }
 

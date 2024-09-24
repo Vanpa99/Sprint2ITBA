@@ -7,42 +7,35 @@ function Boton({
   type = "button",
   className = "",
   dataAccount,
-  formRef,
+  action,
+  formId,
 }) {
-  // const handleClick = (e) => {
-  //   if (onClick) {
-  //     onClick(e);
-  //   }
-  //   if (type === "button" && text === "Limpiar" && formRef?.current) {
-  //     const inputs = formRef.current.querySelectorAll("input");
-  //     inputs.forEach((input) => {
-  //       input.value = "";
-  //     });
-  //   }
-  // };
+  const handleClear = () => {
+    const inputs = document.querySelectorAll("input");
+    inputs.forEach((input) => {
+      input.value = ""; // Limpia el valor de cada input
+    });
+  };
 
-  const handleClick = (e) => {
-    // Ejecutar la función onClick si está definida
+  // Función para enviar el formulario
+  const handleSubmit = () => {
+    const form = document.getElementById(formId); // Busca el formulario por ID
+    if (form) {
+      form.submit(); // Envía el formulario
+      handleClear();
+    }
+  };
+
+   // Función que se ejecuta al hacer clic en el botón
+   const handleClick = (e) => {
     if (onClick) {
       onClick(e);
     }
-  
-    // Si el botón es de tipo "Limpiar" y tenemos una referencia al formulario
-    if (type === "button" && text === "Limpiar" && formRef?.current) {
-      // Limpia todos los inputs dentro del formulario (usando el DOM)
-      const inputs = formRef.current.querySelectorAll("input, textarea");
-      inputs.forEach((input) => {
-        if (input.type === "checkbox" || input.type === "radio") {
-          input.checked = false; // Desmarcar checkboxes y radios
-        } else {
-          input.value = ""; // Limpiar otros tipos de inputs
-        }
-      });
-  
-      // Si hay una función onClear pasada como prop, la llamamos (esto es opcional)
-      if (onClear) {
-        onClear(); // Permitir que el componente padre haga cualquier limpieza adicional de estados
-      }
+    // const handleClicka = () => {
+    if (action === "clear") {
+      handleClear(); // Si la acción es limpiar, limpia los inputs
+    } else if (action === "submit") {
+      handleSubmit(); // Si la acción es enviar, envía el formulario
     }
   };
   

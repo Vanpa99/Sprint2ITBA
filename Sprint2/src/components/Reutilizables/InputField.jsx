@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import reut from "../../modules/Reut.module.css";
 function InputField({
   label,
   type,
@@ -14,7 +15,7 @@ function InputField({
     <div>
       <label htmlFor={id}>{label} </label>
       <input
-        className={"input-field"}
+        className={reut.inputField}
         type={type}
         value={value}
         onChange={onChange}
