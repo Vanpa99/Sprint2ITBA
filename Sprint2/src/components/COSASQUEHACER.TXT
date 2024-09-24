@@ -12,12 +12,22 @@ EN DISTINTAS MONEDAS (AGREGAR OPTION EN EL CASILLERO "SALDO" DE LA TABLA)
 
 CHEQUEAR EN CONSOLA LOS ERRORES Y SOLUCIONARLOS
 
-MIRAR LOS COMENTARIOS DE LOS DISTINTOS COMPONENTES 
+MIRAR LOS COMENTARIOS DE LOS DISTINTOS COMPONENTE  S 
 
 RECUERDEN DOCUMENTAR PORQUE SI NO ME VUELVO MONO ENTENIENDO EL CODIGO 
 
+📂Componentes                         📂Reutilizables
+|- Cuentas.jsx                         |-Boton.jsx
+|- Footer.jsx                          |-BotonCambioMoneda.jsx
+|- Header.jsx                          |-InputField.jsx
+|- Login.jsx ✅                          |-Selector.jsx ESTE SELECTOR TIENE QUE LLAMAR A LA API PARA DARLE LA FUNCION QUE QUERAMOS EN ESTE CASO REEMPLAZAR VALORES POR LA DIVISA QUE LLAMEMOS
+|- Moneda.jsx (componente api) 🛑
+|- Pagar.jsx 
+|- Prestamos.jsx 
+|- Sidebar.jsx 
+|- App.jsx ✅
 
 
 
 
--------------------------PUTO EL QUE NO HACE NADA----------------------
+-----------------------------------------------

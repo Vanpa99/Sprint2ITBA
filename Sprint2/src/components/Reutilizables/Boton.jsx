@@ -41,6 +41,7 @@ function Boton({
 
   // Función que se ejecuta al hacer clic en el botón
   const handleClick = (e) => {
+    // Ejecutar la función onClick si está definida
     if (onClick) {
       onClick(e);
     }
@@ -51,6 +52,7 @@ function Boton({
       handleSubmit(); // Si la acción es enviar, envía el formulario
     }
   };
+  
 
   return (
     <button

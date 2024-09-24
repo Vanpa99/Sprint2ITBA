@@ -4,10 +4,12 @@ import InputField from "./Reutilizables/InputField";
 import Selector from "./Reutilizables/Selector";
 import { opcionesAccion } from "./Reutilizables/Selector";
 import reut from "../modules/Reut.module.css";
+import { Pago } from "./Reutilizables/Selector";
 
 function Pagar() {
   const [accion, setAccion] = useState("transferencia");
   const [mensaje, setMensaje] = useState("");
+  const [moneda, setMoneda] = useState("ARS"); // Valor inicial de la moneda
 
   // // Handler para el envío del formulario
   const handleSubmit = (e) => {
@@ -41,6 +43,7 @@ function Pagar() {
           label="Seleccione el tipo de operación:"
           options={opcionesAccion}
           onChange={(e) => setAccion(e.target.value)}
+          value={accion}
         />
         {accion === "transferencia" && (
           <article>
@@ -72,7 +75,6 @@ function Pagar() {
               placeholder="Ingresa el código de pago"
               required
             />
-            {/* CORREGIR BOTON ENVIAR EN PAGO */}
           </article>
         )}
         <div className={reut.btnContainer}>
@@ -89,3 +91,5 @@ function Pagar() {
 }
 
 export default Pagar;
+
+
