@@ -7,22 +7,9 @@ function Boton({
   type = "button",
   className = "",
   dataAccount,
-  // formRef,
-  action, // Nueva prop para distinguir la acción (limpiar o enviar)
-  formId, // Para vincular el botón con el formulario a enviar
+  action,
+  formId,
 }) {
-  // const handleClick = (e) => {
-  //   if (onClick) {
-  //     onClick(e);
-  //   }
-  // if (type === "button" && text === "Limpiar" && formRef?.current) {
-  //   const inputs = formRef.current.querySelectorAll("input");
-  //   inputs.forEach((input) => {
-  //     input.value = "";
-  //   });
-  // }
-  // };
-
   const handleClear = () => {
     const inputs = document.querySelectorAll("input");
     inputs.forEach((input) => {
@@ -39,8 +26,8 @@ function Boton({
     }
   };
 
-  // Función que se ejecuta al hacer clic en el botón
-  const handleClick = (e) => {
+   // Función que se ejecuta al hacer clic en el botón
+   const handleClick = (e) => {
     if (onClick) {
       onClick(e);
     }
@@ -51,6 +38,7 @@ function Boton({
       handleSubmit(); // Si la acción es enviar, envía el formulario
     }
   };
+  
 
   return (
     <button

@@ -1,6 +1,6 @@
-import Moneda from "./Moneda";
-import styles from "../modules/Inicio.module.css";
+import { Moneda }  from "./Reutilizables/Api";
 import reut from "../modules/Reut.module.css";
+
 
 function Inicio() {
   return (

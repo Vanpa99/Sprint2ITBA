@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
-import Selector from "./Reutilizables/Selector";
+import Selector  from "./Reutilizables/Selector";
 import { opcionesAccion } from "./Reutilizables/Selector";
 import reut from "../modules/Reut.module.css";
 
@@ -9,7 +9,9 @@ function Pagar() {
   const [accion, setAccion] = useState("transferencia");
   const [mensaje, setMensaje] = useState("");
 
-  // // Handler para el envío del formulario
+  
+
+  // Handler para el envío del formulario
   const handleSubmit = (e) => {
     e.preventDefault();
     let mensajeAlerta = "";
@@ -25,6 +27,7 @@ function Pagar() {
     window.alert(mensajeAlerta);
   };
 
+
   return (
     <div className={reut.contPrincipal}>
       <h2 className={reut.sectionTitle}>Métodos de Pago</h2>
@@ -32,10 +35,7 @@ function Pagar() {
         Para realizar una transferencia o pagar con codigo, complete los
         siguientes datos:
       </p>
-      <form onSubmit={handleSubmit} id="formId" className={reut.formContainer}>
-        {/* onSubmit={handleSubmit} CON ESTO NO SE RECARGA LA PAGINA 
-        PERO NO SE LIMPIA CUANDO SE DA A ENVIAR y muestra mensaje, si se lo saco, se limpia
-        pero recarga la pagina (no deseado)*/}
+      <form onSubmit={handleSubmit} id="formId" className={reut.formContainer}>  {/*P U L I R*/}                                 
         <Selector
           name="accion"
           label="Seleccione el tipo de operación:"
@@ -72,20 +72,17 @@ function Pagar() {
               placeholder="Ingresa el código de pago"
               required
             />
-            {/* CORREGIR BOTON ENVIAR EN PAGO */}
           </article>
         )}
         <div className={reut.btnContainer}>
-          <Boton type="submit" text="Enviar" id="enviarFormu" action="submit" />
-          <Boton type="button" text="Limpiar" action="clear" />
+          <Boton type="submit" text="Enviar" id="enviarFormu" action="submit" /> {/* P U L I R */}
+          <Boton type="button" text="Limpiar" action="clear" /> 
         </div>
       </form>
-
-      {/* <section>
-        <p id="mensaje">{mensaje}</p>
-      </section> */}
     </div>
   );
 }
 
 export default Pagar;
+
+

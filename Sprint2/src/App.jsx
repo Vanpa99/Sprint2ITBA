@@ -12,38 +12,16 @@ import styles from "./modules/App.module.css";
 import "./Global.css";
 
 function App() {
-  // Lista de usuarios inicial
-  const [users] = useState([
-    { username: "ITPOWERBANK", password: "2024" },
-    { username: "USUARIO", password: "1234" },
-  ]); // MANDAR A "LOGIN" (y hacer que funcione)
-
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Verificar si ya hay una sesión activa en localStorage cuando el componente se monta
-  useEffect(() => {
-    const storedAuth = localStorage.getItem("isAuthenticated");
-    if (storedAuth === "true") {
-      setIsAuthenticated(true);
-    }
-  }, []);
-
-  const handleLogin = (username, password) => {
-    const userExists = users.some(
-      (user) => user.username === username && user.password === password
-    );
-    if (userExists) {
-      setIsAuthenticated(true);
-      localStorage.setItem("isAuthenticated", "true"); // Guardar la sesión en localStorage
-      return true;
-    }
-    return false;
-  }; // MANDAR A "LOGIN" (y hacer que funcione)
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    localStorage.removeItem("isAuthenticated"); // Eliminar la sesión de localStorage
-  };
+    localStorage.removeItem("isAuthenticated"); 
+  }; 
 
   return (
     <BrowserRouter>
@@ -72,4 +50,6 @@ function App() {
 
 export default App;
 
-// ORIGINAL
+
+
+

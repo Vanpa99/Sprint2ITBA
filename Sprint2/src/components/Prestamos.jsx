@@ -4,12 +4,13 @@ import InputField from "./Reutilizables/InputField";
 import reut from "../modules/Reut.module.css";
 
 function Prestamos() {
+
   useEffect(() => {
     const form = document.getElementById("form_prest");
     const resultado_form = document.getElementById("resultado");
     const acumulado_form = document.getElementById("acumulado");
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = (e) => { /* P A S A R   A  B O T O N*/
       e.preventDefault();
 
       const monto = document.getElementById("monto").value;
@@ -20,10 +21,10 @@ function Prestamos() {
       const denominador = 1 - (1 + tasa) ** -periodo;
 
       const resul = numerador / denominador;
-      const resultado = resul.toFixed(2);
+      const resultado = resul.toFixed(2); /* P U L I R ESTA PORQUERIA NO ACEPTA toLocaleString("es-ES")*/
 
       const acum = resultado * periodo;
-      const acumulado = acum.toFixed(2);
+      const acumulado = acum.toFixed(2); /* P U L I R ESTA PORQUERIA NO ACEPTA toLocaleString("es-ES")*/
 
       resultado_form.value = resultado;
       acumulado_form.value = acumulado;
@@ -48,7 +49,7 @@ function Prestamos() {
       <p className={reut.infoForm}>Se considerará una tasa mensual del 2%.</p>
 
       <form id="form_prest" className={reut.formContainer}>
-        <InputField
+      <InputField
           label="Ingrese el monto en pesos del préstamo que desea realizar:"
           htmlFor="monto"
           type="number"
