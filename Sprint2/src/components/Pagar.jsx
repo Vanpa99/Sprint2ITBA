@@ -1,15 +1,13 @@
 import { useState } from "react";
 import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
-import Selector  from "./Reutilizables/Selector";
+import Selector from "./Reutilizables/Selector";
 import { opcionesAccion } from "./Reutilizables/Selector";
 import reut from "../modules/Reut.module.css";
 
 function Pagar() {
   const [accion, setAccion] = useState("transferencia");
   const [mensaje, setMensaje] = useState("");
-
-  
 
   // Handler para el envío del formulario
   const handleSubmit = (e) => {
@@ -27,7 +25,6 @@ function Pagar() {
     window.alert(mensajeAlerta);
   };
 
-
   return (
     <div className={reut.contPrincipal}>
       <h2 className={reut.sectionTitle}>Métodos de Pago</h2>
@@ -35,7 +32,8 @@ function Pagar() {
         Para realizar una transferencia o pagar con codigo, complete los
         siguientes datos:
       </p>
-      <form onSubmit={handleSubmit} id="formId" className={reut.formContainer}>  {/*P U L I R*/}                                 
+      <form onSubmit={handleSubmit} id="formId" className={reut.formContainer}>
+        {/*P U L I R*/}
         <Selector
           name="accion"
           label="Seleccione el tipo de operación:"
@@ -75,8 +73,9 @@ function Pagar() {
           </article>
         )}
         <div className={reut.btnContainer}>
-          <Boton type="submit" text="Enviar" id="enviarFormu" action="submit" /> {/* P U L I R */}
-          <Boton type="button" text="Limpiar" action="clear" /> 
+          <Boton type="submit" text="Enviar" action="submit" />
+          {/* P U L I R */}
+          <Boton type="button" text="Limpiar" action="clear" />
         </div>
       </form>
     </div>
@@ -84,5 +83,3 @@ function Pagar() {
 }
 
 export default Pagar;
-
-

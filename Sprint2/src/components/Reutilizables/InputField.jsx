@@ -13,7 +13,7 @@ function InputField({
 }) {
   return (
     <div>
-      <label htmlFor={id}>{label} </label>
+      <label htmlFor={id}>{label}</label>
       <input
         className={reut.inputField}
         type={type}

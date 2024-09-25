@@ -7,17 +7,17 @@ function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  
+
   // Verificar si ya hay una sesión activa en localStorage cuando el componente se monta
   useEffect(() => {
-    const storedAuth = localStorage.getItem("isAuthenticated"); 
+    const storedAuth = localStorage.getItem("isAuthenticated");
     if (storedAuth === "true") {
       setIsAuthenticated(true);
     }
   }, []);
-  
+
   // Lista de usuarios
   const users = [
     { username: "ITPOWERBANK", password: "2024" },
@@ -58,7 +58,7 @@ function Login({ onLogin }) {
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Ingresa tu nombre de usuario"
           required
-          autoComplete="off" 
+          autoComplete="off"
         />
         <InputField
           label="Contraseña:"
@@ -67,11 +67,11 @@ function Login({ onLogin }) {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Ingresa tu contraseña"
           required
-          autoComplete="off" 
+          autoComplete="off"
         />
         <div className={reut.btnContainer}>
-        <Boton type="submit" text="Iniciar Sesión" />
-        <Boton type="button" text="Limpiar" action="clear" />
+          <Boton type="submit" text="Iniciar Sesión" />
+          <Boton type="button" text="Limpiar" action="clear" />
         </div>
       </form>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}

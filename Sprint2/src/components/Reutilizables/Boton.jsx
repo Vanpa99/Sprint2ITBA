@@ -17,28 +17,50 @@ function Boton({
     });
   };
 
-  // Función para enviar el formulario
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const form = document.getElementById(formId); // Busca el formulario por ID
     if (form) {
-      form.submit(); // Envía el formulario
-      handleClear();
+      const monto = document.getElementById("monto").value;
+      const periodo = document.getElementById("periodo").value;
+      const tasa = 0.02;
+
+      const numerador = tasa * monto;
+      const denominador = 1 - (1 + tasa) ** -periodo;
+
+      const resul = numerador / denominador;
+      const resultado = resul.toFixed(2);
+
+      const acum = resultado * periodo;
+      const acumulado = acum.toFixed(2);
+
+      document.getElementById("resultado").value = resultado;
+      document.getElementById("acumulado").value = acumulado;
     }
   };
 
-   // Función que se ejecuta al hacer clic en el botón
-   const handleClick = (e) => {
+  const handleClick = (e) => {
     if (onClick) {
-      onClick(e);
+      onClick(e); // Si se ha proporcionado una función onClick, se llama a ella.
     }
-    // const handleClicka = () => {
-    if (action === "clear") {
-      handleClear(); // Si la acción es limpiar, limpia los inputs
-    } else if (action === "submit") {
-      handleSubmit(); // Si la acción es enviar, envía el formulario
+    switch (action) {
+      case "clear":
+        handleClear(); // Si la acción es limpiar, limpia los inputs.
+        break;
+      case "submit":
+        handleSubmit(); // Si la acción es enviar, envía el formulario.
+        break;
+      case "calcular":
+        const monto = document.getElementById("monto").value;
+        const periodo = document.getElementById("periodo").value;
+        if (monto === "" || periodo === "") {
+          handleSubmit();
+        } else {
+          handleSubmit(e);
+        }
+        break;
     }
   };
-  
 
   return (
     <button
@@ -59,7 +81,7 @@ Boton.propTypes = {
   type: PropTypes.string,
   className: PropTypes.string,
   dataAccount: PropTypes.string,
-  formRef: PropTypes.object,
+  formId: PropTypes.string.isRequired,
 };
 
 export default Boton;
