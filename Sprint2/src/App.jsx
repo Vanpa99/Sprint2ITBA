@@ -20,8 +20,8 @@ function App() {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    localStorage.removeItem("isAuthenticated"); 
-  }; 
+    localStorage.removeItem("isAuthenticated");
+  };
 
   return (
     <BrowserRouter>
@@ -49,7 +49,3 @@ function App() {
 }
 
 export default App;
-
-
-
-

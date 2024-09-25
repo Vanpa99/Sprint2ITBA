@@ -85,9 +85,7 @@ function Moneda() {
           onChange={(e) => setAmount(e.target.value)}
           placeholder="Ingrese monto"
         />
-
-        <Boton type="button" text="Limpiar" action="clear" /> {/* C E N T R A R */}
-
+        <Boton type="button" text="Limpiar" action="clear" />
         <Selector
           name="toCurrency"
           label="Moneda convertida:"

@@ -1,43 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Boton from "./Reutilizables/Boton";
 import InputField from "./Reutilizables/InputField";
 import reut from "../modules/Reut.module.css";
 
 function Prestamos() {
-
-  useEffect(() => {
-    const form = document.getElementById("form_prest");
-    const resultado_form = document.getElementById("resultado");
-    const acumulado_form = document.getElementById("acumulado");
-
-    const handleFormSubmit = (e) => { /* P A S A R   A  B O T O N*/
-      e.preventDefault();
-
-      const monto = document.getElementById("monto").value;
-      const periodo = document.getElementById("periodo").value;
-      const tasa = 0.02;
-
-      const numerador = tasa * monto;
-      const denominador = 1 - (1 + tasa) ** -periodo;
-
-      const resul = numerador / denominador;
-      const resultado = resul.toFixed(2); /* P U L I R ESTA PORQUERIA NO ACEPTA toLocaleString("es-ES")*/
-
-      const acum = resultado * periodo;
-      const acumulado = acum.toFixed(2); /* P U L I R ESTA PORQUERIA NO ACEPTA toLocaleString("es-ES")*/
-
-      resultado_form.value = resultado;
-      acumulado_form.value = acumulado;
-    };
-
-    form.addEventListener("submit", handleFormSubmit);
-
-    // Cleanup: Remover el event listener cuando el componente se desmonte
-    return () => {
-      form.removeEventListener("submit", handleFormSubmit);
-    };
-  }, []); // El array vacío asegura que useEffect se ejecute solo una vez, después de que el componente se monte
-
   return (
     <div className={reut.contPrincipal}>
       <h2 className={reut.sectionTitle}>Calculadora De Préstamos</h2>
@@ -48,8 +14,8 @@ function Prestamos() {
 
       <p className={reut.infoForm}>Se considerará una tasa mensual del 2%.</p>
 
-      <form id="form_prest" className={reut.formContainer}>
-      <InputField
+      <form id="formId" className={reut.formContainer}>
+        <InputField
           label="Ingrese el monto en pesos del préstamo que desea realizar:"
           htmlFor="monto"
           type="number"
@@ -69,7 +35,12 @@ function Prestamos() {
           required
         />
         <div className={reut.btnContainer}>
-          <Boton type="submit" text="Calcular" />
+          <Boton
+            type="submit"
+            text="Calcular"
+            action="calcular"
+            formId="formId"
+          />
           <Boton type="button" text="Limpiar" action="clear" />
         </div>
         <InputField
