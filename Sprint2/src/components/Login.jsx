@@ -71,7 +71,14 @@ function Login({ onLogin }) {
         />
         <div className={reut.btnContainer}>
           <Boton type="submit" text="Iniciar Sesión" />
-          <Boton type="button" text="Limpiar" action="clear" />
+          <Boton
+            type="button"
+            text="Limpiar"
+            action="clear"
+            onClick={() => {
+              setUsername(""), setPassword(""), setErrorMessage("");
+            }}
+          />
         </div>
       </form>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}

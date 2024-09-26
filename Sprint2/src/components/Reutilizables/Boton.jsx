@@ -9,12 +9,16 @@ function Boton({
   dataAccount,
   action,
   formId,
+  onClear,
 }) {
   const handleClear = () => {
     const inputs = document.querySelectorAll("input");
     inputs.forEach((input) => {
       input.value = ""; // Limpia el valor de cada input
     });
+    if (onClear) {
+      onClear();
+    }
   };
 
   const handleSubmit = (e) => {
@@ -82,6 +86,7 @@ Boton.propTypes = {
   className: PropTypes.string,
   dataAccount: PropTypes.string,
   formId: PropTypes.string.isRequired,
+  onClear: PropTypes.func,
 };
 
 export default Boton;
